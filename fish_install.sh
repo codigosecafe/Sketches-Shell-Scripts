@@ -1,4 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+echo "#=============================================================================="
+echo "# title       : Fish shell"
+echo "# description : Instalando uma alternativa configurável e fácil de usar para o Bash."
+echo "# author      : Claudio Alexssandro Lino"
+echo "# site        : http://codigosecafe.com.br"
+echo "# github      : https://github.com/codigosecafe"
+echo "# date        : 18/01/2018"
+echo "# version     : 1.0"
+echo "#=============================================================================="
+
 echo "Lendo os pacotes disponiveis"
 sudo apt-get update
 echo "Atulizando a lista de pacotes"
