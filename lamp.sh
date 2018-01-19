@@ -24,7 +24,7 @@ echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-apt-get install software-properties-common python-software-properties curl unzip
+apt-get install -y software-properties-common python-software-properties curl unzip mcrypt
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
@@ -43,8 +43,10 @@ sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php 
 sudo apt-get update
+sudo apt-cache search php
 sudo apt-cache search php7.2
-sudo apt-get install -y php7.2-cli libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-dev php7.2-mcrypt php7.2-sqlite3 php7.2-mbstring php7.2-gd php7.2-json php7.2-xml php7.2-zip
+sudo apt-get install -y php7.2-cli libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-dev php7.2-mcrypt php-mcrypt php7.2-sqlite3 php7.2-mbstring php7.2-gd php7.2-json php7.2-xml php7.2-zip
+sudo apt-cache search php7.2
 php --ini
 sudo systemctl restart apache2
 echo "\n"
