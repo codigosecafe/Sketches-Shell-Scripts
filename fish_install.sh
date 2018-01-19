@@ -26,3 +26,6 @@ chsh -s /usr/bin/fish
 echo "\n"
 echo "Iniciando o fish"
 fish
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
