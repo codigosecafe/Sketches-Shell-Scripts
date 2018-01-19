@@ -64,6 +64,8 @@ echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
 echo "#=============================================================================="
 sudo a2enmod rewrite 
 sudo systemctl restart apache2
+echo '<?php phpinfo(); ?>' > /var/www/html/infophp.php
+xdg-open http://localhost/infophp.php
 apache2 -v
 php -v
 mysql -V
