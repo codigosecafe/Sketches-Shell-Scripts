@@ -42,9 +42,8 @@ echo "|----------------------------------------------------|"
 sudo add-apt-repository -y ppa:ondrej/php 
 sudo apt-get update
 sudo LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php 
-sudo apt-get update
-sudo apt-cache search php
 sudo apt-cache search php7.2
+sudo apt-get update
 sudo apt-get install -y php7.2-cli libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-dev php7.2-mcrypt php-mcrypt php7.2-sqlite3 php7.2-mbstring php7.2-gd php7.2-json php7.2-xml php7.2-zip
 sudo apt-cache search php7.2
 php --ini
