@@ -48,7 +48,7 @@ sudo apt-cache search php7.2
 sudo apt-get install -y php7.2-cli libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-dev php7.2-mcrypt php-mcrypt php7.2-sqlite3 php7.2-mbstring php7.2-gd php7.2-json php7.2-xml php7.2-zip
 sudo apt-cache search php7.2
 php --ini
-sudo systemctl restart apache2
+
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
@@ -63,6 +63,8 @@ echo "\n"
 echo "#=============================================================================="
 echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
 echo "#=============================================================================="
+sudo a2enmod rewrite 
+sudo systemctl restart apache2
 apache2 -v
 php -v
 mysql -V
