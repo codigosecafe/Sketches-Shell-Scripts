@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "\n\n"
 echo "#=============================================================================="
 echo "# title       : NODEJS NPM BOWER LIVESERVER"

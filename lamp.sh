@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "\n\n"
 echo "#=============================================================================="
 echo "# title       : LAMP"
@@ -25,7 +25,7 @@ echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-apt-get install -y software-properties-common python-software-properties curl unzip mcrypt git
+sudo apt-get install -y software-properties-common python-software-properties curl unzip mcrypt git
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
@@ -51,8 +51,8 @@ echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
 echo "|----------------------------------------------------|"
-curl -sS https://getcomposer.org/installer -o composer-setup.php
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
 #echo "instalando o phpMyAdmin"
