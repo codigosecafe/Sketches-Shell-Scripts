@@ -10,6 +10,7 @@ echo "# date        : 18/01/2018"
 echo "# version     : 1.0"
 echo "#=============================================================================="
 echo "\n"
+cd ~/
 echo "##### => Lendo os pacotes disponiveis"
 sudo apt-get update
 echo "\n"
