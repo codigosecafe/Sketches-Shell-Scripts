@@ -12,21 +12,21 @@ echo "#=========================================================================
 echo "\n"
 cd ~/
 echo "##### => Lendo os pacotes disponiveis"
-sudo apt-get update
+env -i sudo apt-get update
 echo "\n"
 echo "##### => Atulizando a lista de pacotes"
-sudo apt-get upgrade -y
+env -i sudo apt-get upgrade -y
 echo "\n"
 echo "##### => Adcionando fish ao sistema"
-sudo apt-add-repository ppa:fish-shell/release-2 -y
-sudo apt-get update
-sudo apt-get install fish -y
+env -i sudo apt-add-repository ppa:fish-shell/release-2 -y
+env -i sudo apt-get update
+env -i sudo apt-get install fish -y
 echo "\n"
 echo "##### => Defenindo o fish como padrao"
-chsh -s /usr/bin/fish
+env -i chsh -s /usr/bin/fish
 echo "\n"
 echo "Iniciando o fish"
-fish
+env -i fish
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"

@@ -14,45 +14,45 @@ cd ~/
 echo "|----------------------------------------------------|"
 echo "##### => Lendo e atualizando os pacotes do sistema"
 echo "|----------------------------------------------------|"
-sudo apt-get update 
-sudo apt-get -y upgrade 
+env -i sudo apt-get update 
+env -i sudo apt-get -y upgrade 
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Atualizando a distribução do sistema"
 echo "|----------------------------------------------------|"
-sudo apt-get -y dist-upgrade
+env -i sudo apt-get -y dist-upgrade
 echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-sudo apt-get install -y software-properties-common python-software-properties curl unzip mcrypt git
+env -i sudo apt-get install -y software-properties-common python-software-properties curl unzip mcrypt git
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
 echo "|----------------------------------------------------|"
-sudo apt-get install mysql-server -y
+env -i sudo apt-get install mysql-server -y
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
-sudo apt-get install apache2 -y
-sudo a2enmod rewrite 
+env -i sudo apt-get install apache2 -y
+env -i sudo a2enmod rewrite 
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
-sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
-sudo apt-get update
-sudo apt-get install php7.1 php7.1-cli libapache2-mod-php7.1 php7.1-mysql php7.1-curl php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
-sudo apt-cache search php7.1
-php --ini
-sudo service apache2 restart
+env -i sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
+env -i sudo apt-get update
+env -i sudo apt-get install php7.1 php7.1-cli libapache2-mod-php7.1 php7.1-mysql php7.1-curl php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+env -i sudo apt-cache search php7.1
+env -i php --ini
+env -i sudo service apache2 restart
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
 echo "|----------------------------------------------------|"
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+env -i curl -sS https://getcomposer.org/installer | php
+env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
 #echo "instalando o phpMyAdmin"
@@ -62,11 +62,11 @@ echo "#=========================================================================
 echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
 echo "#=============================================================================="
 
-echo '<?php phpinfo(); ?>' > /var/www/html/infophp.php
-xdg-open http://localhost/infophp.php
-apache2 -v
-php -v
-mysql -V
+env -i echo '<?php phpinfo(); ?>' > /var/www/html/infophp.php
+env -i xdg-open http://localhost/infophp.php
+env -i apache2 -v
+env -i php -v
+env -i mysql -V
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"

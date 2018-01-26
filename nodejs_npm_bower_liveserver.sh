@@ -14,38 +14,38 @@ cd ~/
 echo "|----------------------------------------------------|"
 echo "##### => Lendo e atualizando os pacotes do sistema"
 echo "|----------------------------------------------------|"
-sudo apt-get update 
-sudo apt-get -y upgrade 
+env -i sudo apt-get update 
+env -i sudo apt-get -y upgrade 
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Atualizando a distribução do sistema"
 echo "|----------------------------------------------------|"
-sudo apt-get -y dist-upgrade
+env -i sudo apt-get -y dist-upgrade
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando NodeJS"
 echo "|----------------------------------------------------|"
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm i -g npm
+env -i curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+env -i sudo apt-get install -y nodejs
+env -i sudo npm i -g npm
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando Bower"
 echo "|----------------------------------------------------|"
-sudo npm install -y -g bower
+env -i sudo npm install -y -g bower
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando Live server"
 echo "|----------------------------------------------------|"
-sudo npm install live-server -g
+env -i sudo npm install live-server -g
 
 echo "\n"
 echo "#=============================================================================="
 echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
 echo "#=============================================================================="
 
-node --version
-npm --version
+env -i node --version
+env -i npm --version
 
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
