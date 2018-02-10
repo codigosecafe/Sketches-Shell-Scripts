@@ -27,7 +27,7 @@ echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-env -i sudo aptitude install -y software-properties-common python-software-properties build-essential libssl-dev libmaxminddb-dev libncursesw5-dev libglib2.0-dev libgeoip-dev libtokyocabinet-dev
+env -i sudo aptitude install -y software-properties-common python-software-properties build-essential libssl-dev
 env -i sudo aptitude install -y curl unzip mcrypt git lynx vim 
 echo "\n"
 echo "|----------------------------------------------------|"
