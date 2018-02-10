@@ -15,29 +15,49 @@ echo "|----------------------------------------------------|"
 echo "##### => Lendo e atualizando os pacotes do sistema"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get update 
-env -i sudo apt-get -y upgrade 
+env -i sudo apt-get --assume-yes --force-yes upgrade 
 
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Atualizando a distribução do sistema"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get -y dist-upgrade
+env -i sudo apt-get --assume-yes --force-yes dist-upgrade
 echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-env -i sudo apt-get install -y software-properties-common python-software-properties build-essential libssl-dev
-env -i sudo apt-get install -y curl unzip mcrypt git lynx vim
+env -i sudo apt-get install --assume-yes --force-yes software-properties-common python-software-properties build-essential libssl-dev
+env -i sudo apt-get install --assume-yes --force-yes curl unzip mcrypt git lynx vim
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get install mysql-server mysql-client -y
+echo "\n"
+echo "##### => DIGITE UMA SENHA PARA O MySQL e phpMyAdmin: "
+read DEFAULTPASS
+#DEFAULTPASS="root"
+sudo debconf-set-selections <<EOF
+mysql-server	mysql-server/root_password password $DEFAULTPASS
+mysql-server	mysql-server/root_password_again password $DEFAULTPASS
+dbconfig-common	dbconfig-common/mysql/app-pass password $DEFAULTPASS
+dbconfig-common	dbconfig-common/mysql/admin-pass password $DEFAULTPASS
+dbconfig-common	dbconfig-common/password-confirm password $DEFAULTPASS
+dbconfig-common	dbconfig-common/app-password-confirm password $DEFAULTPASS
+phpmyadmin		phpmyadmin/reconfigure-webserver multiselect apache2
+phpmyadmin		phpmyadmin/dbconfig-install boolean true
+phpmyadmin      phpmyadmin/app-password-confirm password $DEFAULTPASS 
+phpmyadmin      phpmyadmin/mysql/admin-pass     password $DEFAULTPASS
+phpmyadmin      phpmyadmin/password-confirm     password $DEFAULTPASS
+phpmyadmin      phpmyadmin/setup-password       password $DEFAULTPASS
+phpmyadmin      phpmyadmin/mysql/app-pass       password $DEFAULTPASS
+EOF
+
+env -i sudo apt-get install mysql-server mysql-client --assume-yes --force-yes
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get install apache2 -y
+env -i sudo apt-get install apache2 --assume-yes --force-yes
 #echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
 sudo a2enmod rewrite 
@@ -47,11 +67,11 @@ echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
-sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php --assume-yes --force-yes
 cd ~/
 env -i sudo apt-get update
-env -i sudo apt-get install php7.1 php7.1-common -y
-env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+env -i sudo apt-get install php7.1 php7.1-common --assume-yes --force-yes
+env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
 
 sudo apt-cache search php7.1
 env -i php --ini
@@ -67,16 +87,17 @@ echo "\n"
 # Opcional
 echo "instalando o phpMyAdmin"
 env -i sudo apt-get update
-env -i sudo apt-get install dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring phpmyadmin -y
-env -i sudo apt-get install phpmyadmin php-mbstring php-gettext javascript-common php-libsodium php-gmp -y
+env -i sudo apt-get install dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring phpmyadmin --assume-yes --force-yes
+env -i sudo apt-get install php-mbstring php-gettext javascript-common php-libsodium php-gmp --assume-yes --force-yes
+env -i sudo apt-get install phpmyadmin --assume-yes --force-yes
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
 cd ~/
 env -i sudo apt-get update 
-env -i sudo apt-get -y upgrade 
-env -i sudo apt-get -y clean
-env -i sudo apt-get -y autoclean
+env -i sudo apt-get --assume-yes --force-yes upgrade 
+env -i sudo apt-get --assume-yes --force-yes clean
+env -i sudo apt-get --assume-yes --force-yes autoclean
 echo "\n"
 echo "#=============================================================================="
 echo "# ADICIONANDO MODELO PADROA PARA VHOST"
