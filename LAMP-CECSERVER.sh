@@ -86,8 +86,9 @@ env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
 echo "instalando o phpMyAdmin"
-env -i sudo apt-get update
-env -i sudo apt-get install dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore javascript-common php-gettext --assume-yes --force-yes
+sudo add-apt-repository ppa:nijel/phpmyadmin
+sudo apt-get update
+cd ~/
 env -i sudo apt-get install phpmyadmin
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
