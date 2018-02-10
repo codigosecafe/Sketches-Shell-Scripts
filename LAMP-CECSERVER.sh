@@ -63,20 +63,7 @@ sudo vim /etc/apache2/conf-available/security.conf
 sudo a2enmod rewrite 
 sudo a2enmod deflate
 sudo /etc/init.d/apache2 restart
-echo "\n"
-echo "|----------------------------------------------------|"
-echo "##### => Instalando o PHP 7.1"
-echo "|----------------------------------------------------|"
-sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php --assume-yes --force-yes
-cd ~/
-env -i sudo apt-get update
-env -i sudo apt-get install php7.1 php7.1-common --assume-yes --force-yes
-env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
 
-sudo apt-cache search php7.1
-env -i php --ini
-sudo /etc/init.d/apache2 restart
-echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
 echo "|----------------------------------------------------|"
@@ -93,6 +80,20 @@ env -i sudo apt-get install phpmyadmin --assume-yes --force-yes
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
+echo "\n"
+echo "|----------------------------------------------------|"
+echo "##### => Instalando o PHP 7.1"
+echo "|----------------------------------------------------|"
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php --assume-yes --force-yes
+cd ~/
+env -i sudo apt-get update
+env -i sudo apt-get install php7.1 php7.1-common --assume-yes --force-yes
+env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
+
+sudo apt-cache search php7.1
+env -i php --ini
+sudo /etc/init.d/apache2 restart
+echo "\n"
 cd ~/
 env -i sudo apt-get update 
 env -i sudo apt-get --assume-yes --force-yes upgrade 
