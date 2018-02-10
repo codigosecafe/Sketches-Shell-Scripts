@@ -30,7 +30,7 @@ env -i chsh -s /usr/bin/fish
 env -i echo /usr/local/bin/fish | sudo tee -a /etc/shells
 echo "\n"
 echo "Iniciando o fish"
-env -i env TERM=xterm-256color fish
+fish
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"

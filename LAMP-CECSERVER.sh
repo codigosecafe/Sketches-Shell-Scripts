@@ -39,8 +39,8 @@ echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
 env -i sudo aptitude install apache2 -y
-echo "##### => MELHORANDO SEGURANÇA DO APACHE"
-env -i sudo vim /etc/apache2/conf-available/security.conf
+#echo "##### => MELHORANDO SEGURANÇA DO APACHE"
+sudo vim /etc/apache2/conf-available/security.conf
 env -i sudo a2enmod rewrite 
 env -i sudo a2enmod deflate
 env -i sudo /etc/init.d/apache2 restart
