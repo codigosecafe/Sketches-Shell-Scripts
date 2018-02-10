@@ -26,7 +26,7 @@ env -i sudo aptitude install fish -y
 
 echo "\n"
 echo "##### => Defenindo o fish como padrao"
-env -i chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish
 echo "\n"
 echo "Iniciando o fish"
 fish
