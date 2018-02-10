@@ -10,8 +10,6 @@ echo "# date        : 18/01/2018"
 echo "# version     : 1.0"
 echo "#=============================================================================="
 echo "\n"
-mv ~/.bashrc ~/bashrcOLD.txt
-env -i cp bashrc.text ~/.bashrc
 cd ~/
 echo "##### => Lendo os pacotes disponiveis"
 env -i sudo apt-get update
@@ -29,9 +27,10 @@ env -i sudo aptitude install fish -y
 echo "\n"
 echo "##### => Defenindo o fish como padrao"
 env -i chsh -s /usr/bin/fish
+env -i echo /usr/local/bin/fish | sudo tee -a /etc/shells
 echo "\n"
 echo "Iniciando o fish"
-env -i fish
+env -i env TERM=xterm-256color fish
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"
