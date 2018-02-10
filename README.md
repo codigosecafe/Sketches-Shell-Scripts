@@ -2,8 +2,10 @@
 ## ATENÇÃO
 Os arquivos presente neste repositório, passam por constante manutenção com forme aumento o meu conhecimento em Servidores baseados em Linux com Ubuntu. 
 
-
-
+Para baixar esse repositorio via linha de comando no linux Ubuntu
+```
+$ wget https://github.com/codigosecafe/meus-shell-scripts/archive/master.zip -O master.zip
+```
 # Sobre: Claudio Alexssandro Lino
 
 >Sou Full Stack Developer gosto de atuar em todas as fazes dos projetos, desde a criação do wireframe, configuração do servidor, planejamento das historias através dos métodos ágeis, codificação do backend e frontend. 
