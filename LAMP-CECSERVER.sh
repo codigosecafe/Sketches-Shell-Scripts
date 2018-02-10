@@ -49,6 +49,7 @@ echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
 sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
+cd ~/
 env -i sudo aptitude update
 env -i sudo aptitude install php7.1 php7.1-common -y
 env -i sudo aptitude install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
@@ -59,7 +60,7 @@ echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
 echo "|----------------------------------------------------|"
-
+cd ~/
 env -i curl -sS https://getcomposer.org/installer | php
 env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
@@ -70,9 +71,7 @@ env -i sudo aptitude install phpmyadmin php-mbstring php-gettext
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
-
-
-
+cd ~/
 env -i sudo aptitude update 
 env -i sudo aptitude -y upgrade 
 env -i sudo aptitude -y clean
