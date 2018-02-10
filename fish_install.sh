@@ -26,9 +26,6 @@ env -i sudo apt-add-repository ppa:fish-shell/release-2 -y
 env -i sudo aptitude update
 env -i sudo aptitude install fish -y
 
-env -i sudo set -gx TERM "xterm-256color" set -xU LSCOLORS 'di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
-env -i sudo export TERM=xterm-256color
-
 echo "\n"
 echo "##### => Defenindo o fish como padrao"
 env -i chsh -s /usr/bin/fish
