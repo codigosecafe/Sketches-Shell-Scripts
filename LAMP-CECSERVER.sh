@@ -39,8 +39,8 @@ echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get install apache2 -y
-#echo "##### => MELHORANDO SEGURANÇA DO APACHE"
-#env -i sudo vim /etc/apache2/conf-available/security.conf
+echo "##### => MELHORANDO SEGURANÇA DO APACHE"
+env -i sudo vim /etc/apache2/conf-available/security.conf
 env -i sudo a2enmod rewrite 
 env -i sudo a2enmod deflate
 env -i sudo /etc/init.d/apache2 restart
@@ -64,8 +64,15 @@ env -i curl -sS https://getcomposer.org/installer | php
 env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
-#echo "instalando o phpMyAdmin"
-#sudo apt-get install phpmyadmin
+echo "instalando o phpMyAdmin"
+env -i sudo apt-get update
+env -i sudo apt-get install phpmyadmin php-mbstring php-gettext
+env -i sudo phpenmod mcrypt
+env -i sudo phpenmod mbstring
+env -i sudo systemctl restart apache2
+
+
+
 env -i sudo aptitude update 
 env -i sudo aptitude -y upgrade 
 env -i sudo aptitude -y clean
@@ -120,7 +127,8 @@ echo "#=========================================================================
 echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
 echo "#=============================================================================="
 
-env -i echo '<?php phpinfo(); ?>' > /var/www/html/cecphp.php
+env -i echo '<?php phpinfo(); ?>' > ~/cecphp.php
+env -i sudo mv cecphp.php /var/www/html/
 env -i xdg-open http://localhost/cecphp.php
 env -i lynx http://localhost/cecphp.php
 env -i apache2 -v
