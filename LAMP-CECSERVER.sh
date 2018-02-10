@@ -41,20 +41,20 @@ echo "|----------------------------------------------------|"
 env -i sudo aptitude install apache2 -y
 #echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
-env -i sudo a2enmod rewrite 
-env -i sudo a2enmod deflate
-env -i sudo /etc/init.d/apache2 restart
+sudo a2enmod rewrite 
+sudo a2enmod deflate
+sudo /etc/init.d/apache2 restart
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
-env -i sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 env -i sudo aptitude update
 env -i sudo aptitude install php7.1 php7.1-common -y
 env -i sudo aptitude install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
-env -i sudo apt-cache search php7.1
+sudo apt-cache search php7.1
 env -i php --ini
-env -i sudo /etc/init.d/apache2 restart
+sudo /etc/init.d/apache2 restart
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
@@ -69,7 +69,7 @@ env -i sudo aptitude update
 env -i sudo aptitude install phpmyadmin php-mbstring php-gettext
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
-env -i sudo systemctl restart apache2
+sudo /etc/init.d/apache2 restart
 
 
 
@@ -129,11 +129,11 @@ echo "#=========================================================================
 
 env -i echo '<?php phpinfo(); ?>' > ~/cecphp.php
 env -i sudo mv cecphp.php /var/www/html/
-env -i xdg-open http://localhost/cecphp.php
-env -i lynx http://localhost/cecphp.php
-env -i apache2 -v
-env -i php -v
-env -i mysql -V
+xdg-open http://localhost/cecphp.php
+lynx http://localhost/cecphp.php
+apache2 -v
+php -v
+mysql -V
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"
