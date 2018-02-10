@@ -16,8 +16,7 @@ echo "##### => Lendo e atualizando os pacotes do sistema"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get update 
 env -i sudo apt-get -y upgrade 
-echo "# => instalando aptitude "
-env -i sudo apt-get install -y aptitude
+
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Atualizando a distribução do sistema"
@@ -27,18 +26,18 @@ echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-env -i sudo aptitude install -y software-properties-common python-software-properties build-essential libssl-dev
-env -i sudo aptitude install -y curl unzip mcrypt git lynx vim 
+env -i sudo apt-get install -y software-properties-common python-software-properties build-essential libssl-dev
+env -i sudo apt-get install -y curl unzip mcrypt git lynx vim
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
 echo "|----------------------------------------------------|"
-env -i sudo aptitude install mysql-server mysql-client -y
+env -i sudo apt-get install mysql-server mysql-client -y
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
-env -i sudo aptitude install apache2 -y
+env -i sudo apt-get install apache2 -y
 #echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
 sudo a2enmod rewrite 
@@ -50,9 +49,9 @@ echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
 sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 cd ~/
-env -i sudo aptitude update
-env -i sudo aptitude install php7.1 php7.1-common -y
-env -i sudo aptitude install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+env -i sudo apt-get update
+env -i sudo apt-get install php7.1 php7.1-common -y
+env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
 sudo apt-cache search php7.1
 env -i php --ini
 sudo /etc/init.d/apache2 restart
@@ -66,16 +65,16 @@ env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
 echo "instalando o phpMyAdmin"
-env -i sudo aptitude update
-env -i sudo aptitude install phpmyadmin php-mbstring php-gettext
+env -i sudo apt-get update
+env -i sudo apt-get install phpmyadmin php-mbstring php-gettext
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
 cd ~/
-env -i sudo aptitude update 
-env -i sudo aptitude -y upgrade 
-env -i sudo aptitude -y clean
-env -i sudo aptitude -y autoclean
+env -i sudo apt-get update 
+env -i sudo apt-get -y upgrade 
+env -i sudo apt-get -y clean
+env -i sudo apt-get -y autoclean
 echo "\n"
 echo "#=============================================================================="
 echo "# ADICIONANDO MODELO PADROA PARA VHOST"
