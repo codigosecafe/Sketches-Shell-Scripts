@@ -52,6 +52,7 @@ cd ~/
 env -i sudo apt-get update
 env -i sudo apt-get install php7.1 php7.1-common -y
 env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+
 sudo apt-cache search php7.1
 env -i php --ini
 sudo /etc/init.d/apache2 restart
@@ -66,7 +67,8 @@ echo "\n"
 # Opcional
 echo "instalando o phpMyAdmin"
 env -i sudo apt-get update
-env -i sudo apt-get install phpmyadmin php-mbstring php-gettext
+env -i sudo apt-get install dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring dbconfig-common dbconfig-mysql libjs-jquery libjs-sphinxdoc libjs-underscore php-gettext php-mbstring php-pear php-phpseclib php7.2-common php7.2-mbstring phpmyadmin -y
+env -i sudo apt-get install phpmyadmin php-mbstring php-gettext javascript-common php-libsodium php-gmp -y
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
