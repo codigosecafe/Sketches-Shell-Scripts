@@ -29,8 +29,6 @@ echo "##### => Instalando alguns pacotes que serão necessários para realizar n
 echo "|----------------------------------------------------------------------------------------------|"
 env -i sudo aptitude install -y software-properties-common python-software-properties build-essential libssl-dev libmaxminddb-dev libncursesw5-dev libglib2.0-dev libgeoip-dev libtokyocabinet-dev
 env -i sudo aptitude install -y curl unzip mcrypt git lynx vim 
-env -i sudo set -gx TERM "xterm-256color" set -xU LSCOLORS 'di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
-env -i sudo export TERM=xterm-256color
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
@@ -41,8 +39,8 @@ echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
 env -i sudo aptitude install apache2 -y
-echo "##### => MELHORANDO SEGURANÇA DO APACHE"
-env -i sudo vim /etc/apache2/conf-available/security.conf
+#echo "##### => MELHORANDO SEGURANÇA DO APACHE"
+#env -i sudo vim /etc/apache2/conf-available/security.conf
 env -i sudo a2enmod rewrite 
 env -i sudo a2enmod deflate
 env -i sudo /etc/init.d/apache2 restart
