@@ -117,10 +117,10 @@ echo "#=========================================================================
 
 env -i echo '<?php phpinfo(); ?>' > /var/www/html/cecphp.php
 echo "# visualizar PHP INFO:   http://localhost/cecphp.php"
-env -i lynx http://localhost/cecphp.php
-env -i apache2 -v
-env -i php -v
-env -i mysql -V
+
+apache2 -v
+php -v
+mysql -V
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"
