@@ -37,6 +37,7 @@ echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get install apache2 -y
+sudo vim /etc/apache2/envvars
 echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
 env -i sudo a2enmod rewrite 
