@@ -7,7 +7,7 @@ echo "# author      : Claudio Alexssandro Lino"
 echo "# site        : http://cecdigitalmaker.com.br"
 echo "# github      : https://github.com/codigosecafe"
 echo "# date        : 10/02/2018"
-echo "# version     : 2.5"
+echo "# version     : 2.6"
 echo "#=============================================================================="
 echo "\n"
 cd ~/
@@ -64,15 +64,15 @@ sudo a2enmod rewrite
 sudo a2enmod deflate
 sudo /etc/init.d/apache2 restart
 echo "|----------------------------------------------------|"
-echo "##### => Instalando o PHP 7.1"
+echo "##### => Instalando o PHP 7.0"
 echo "|----------------------------------------------------|"
 sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php --assume-yes --force-yes
 cd ~/
 env -i sudo apt-get update
-env -i sudo apt-get install php7.1 php7.1-common --assume-yes --force-yes
-env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-cgi php7.1-mysql php-pear php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
+env -i sudo apt-get install php7.0 php7.0-common --assume-yes --force-yes
+env -i sudo apt-get install php7.0-cli php7.0-gd libapache2-mod-php7.0 php7.0-cgi php7.0-mysql php-pear php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php7.0-mbstring php7.0-zip php7.0-xml --assume-yes --force-yes
 
-sudo apt-cache search php7.1
+sudo apt-cache search php7.0
 env -i php --ini
 sudo /etc/init.d/apache2 restart
 
@@ -86,10 +86,8 @@ env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
 # Opcional
 echo "instalando o phpMyAdmin"
-sudo add-apt-repository ppa:nijel/phpmyadmin
-sudo apt-get update
 cd ~/
-env -i sudo apt-get install phpmyadmin
+env -i sudo apt-get install phpmyadmin --assume-yes --force-yes
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
