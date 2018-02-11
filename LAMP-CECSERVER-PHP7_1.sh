@@ -61,10 +61,10 @@ cd ~/
 env -i curl -sS https://getcomposer.org/installer | php
 env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
-env -i sudo aptitude update 
-env -i sudo aptitude -y upgrade 
-env -i sudo aptitude -y clean
-env -i sudo aptitude -y autoclean
+env -i sudo apt-get update 
+env -i sudo apt-get -y upgrade 
+env -i sudo apt-get -y clean
+env -i sudo apt-get -y autoclean
 echo "\n"
 echo "#=============================================================================="
 echo "# ADICIONANDO MODELO PADROA PARA VHOST"
