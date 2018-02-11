@@ -146,8 +146,6 @@ env -i sudo apt-get autoclean -y
 echo "\n"
 env -i echo '<?php phpinfo(); ?>' > ~/cecphp.php
 env -i sudo mv cecphp.php /var/www/html/
-xdg-open http://localhost/cecphp.php
-lynx http://localhost/cecphp.php
 apache2 -v
 php -v
 mysql -V
