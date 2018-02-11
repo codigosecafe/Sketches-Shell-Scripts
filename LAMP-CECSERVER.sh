@@ -2,12 +2,12 @@
 echo "\n\n"
 echo "#=============================================================================="
 echo "# title       : LAMP UBUNTU >= 16 "
-echo "# description : INSTALANDO O AMBIENTE PARA DESENVOLVIMENTO PHP."
+echo "# description : INSTALANDO O AMBIENTE PARA DESENVOLVIMENTO PHP7.0"
 echo "# author      : Claudio Alexssandro Lino"
 echo "# site        : http://cecdigitalmaker.com.br"
 echo "# github      : https://github.com/codigosecafe"
 echo "# date        : 10/02/2018"
-echo "# version     : 2.6"
+echo "# version     : 2.7"
 echo "#=============================================================================="
 echo "\n"
 cd ~/
@@ -32,6 +32,9 @@ echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
 echo "|----------------------------------------------------|"
+echo "##### => INSTALAR PHPMYADMIN? (S) para installar"
+read INSSTALLPHPMYADMIN
+if [ "$INSSTALLPHPMYADMIN" == "S" ]; then
 echo "\n"
 echo "##### => DIGITE UMA SENHA PARA O MySQL e phpMyAdmin: "
 read DEFAULTPASS
@@ -51,14 +54,14 @@ phpmyadmin      phpmyadmin/password-confirm     password $DEFAULTPASS
 phpmyadmin      phpmyadmin/setup-password       password $DEFAULTPASS
 phpmyadmin      phpmyadmin/mysql/app-pass       password $DEFAULTPASS
 EOF
-
+fi
 env -i sudo apt-get install mysql-server mysql-client -y
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get install apache2 -y
-#echo "##### => MELHORANDO SEGURANÇA DO APACHE"
+echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
 sudo a2enmod rewrite 
 sudo a2enmod deflate
@@ -79,6 +82,7 @@ cd ~/
 env -i curl -sS https://getcomposer.org/installer | php
 env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
+if [ "$INSSTALLPHPMYADMIN" == "S" ]; then
 echo "|----------------------------------------------------|"
 echo "##### => instalando o phpMyAdmin"
 echo "|----------------------------------------------------|"
@@ -86,9 +90,8 @@ cd ~/
 env -i sudo apt-get install phpmyadmin -y
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
-sudo /etc/init.d/apache2 restart
 echo "\n"
-
+fi
 echo "#=============================================================================="
 echo "# ADICIONANDO MODELO PADROA PARA VHOST"
 echo "#=============================================================================="
@@ -144,6 +147,7 @@ env -i sudo apt-get upgrade -y
 env -i sudo apt-get clean -y
 env -i sudo apt-get autoclean -y
 echo "\n"
+sudo /etc/init.d/apache2 restart
 env -i echo '<?php phpinfo(); ?>' > ~/cecphp.php
 env -i sudo mv cecphp.php /var/www/html/
 apache2 -v
