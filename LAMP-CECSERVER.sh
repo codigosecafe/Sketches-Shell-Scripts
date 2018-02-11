@@ -15,19 +15,19 @@ echo "|----------------------------------------------------|"
 echo "##### => Lendo e atualizando os pacotes do sistema"
 echo "|----------------------------------------------------|"
 env -i sudo apt-get update 
-env -i sudo apt-get --assume-yes --force-yes upgrade 
+env -i sudo apt-get -y upgrade 
 
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Atualizando a distribução do sistema"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get --assume-yes --force-yes dist-upgrade
+env -i sudo apt-get -y dist-upgrade
 echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando alguns pacotes que serão necessários para realizar nossa configuração."
 echo "|----------------------------------------------------------------------------------------------|"
-env -i sudo apt-get install --assume-yes --force-yes software-properties-common python-software-properties build-essential libssl-dev
-env -i sudo apt-get install --assume-yes --force-yes curl unzip mcrypt git lynx vim
+env -i sudo apt-get install -y software-properties-common python-software-properties build-essential libssl-dev
+env -i sudo apt-get install -y curl unzip mcrypt git lynx vim
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL"
@@ -52,12 +52,12 @@ phpmyadmin      phpmyadmin/setup-password       password $DEFAULTPASS
 phpmyadmin      phpmyadmin/mysql/app-pass       password $DEFAULTPASS
 EOF
 
-env -i sudo apt-get install mysql-server mysql-client --assume-yes --force-yes
+env -i sudo apt-get install mysql-server mysql-client -y
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get install apache2 --assume-yes --force-yes
+env -i sudo apt-get install apache2 -y
 #echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 sudo vim /etc/apache2/conf-available/security.conf
 sudo a2enmod rewrite 
@@ -66,17 +66,12 @@ sudo /etc/init.d/apache2 restart
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.0"
 echo "|----------------------------------------------------|"
-sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php --assume-yes --force-yes
 cd ~/
-env -i sudo apt-get update
-env -i sudo apt-get install php7.0 php7.0-common --assume-yes --force-yes
-env -i sudo apt-get install php7.0-cli php7.0-gd libapache2-mod-php7.0 php7.0-cgi php7.0-mysql php-pear php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php7.0-mbstring php7.0-zip php7.0-xml --assume-yes --force-yes
-
+env -i sudo apt-get install php7.0 php7.0-common -y
+env -i sudo apt-get install php7.0-cli php7.0-gd libapache2-mod-php7.0 php7.0-cgi php7.0-mysql php-pear php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php7.0-mbstring php7.0-zip php7.0-xml -y
 sudo apt-cache search php7.0
 env -i php --ini
 sudo /etc/init.d/apache2 restart
-
-
 echo "|----------------------------------------------------|"
 echo "##### => Instalar o Composer"
 echo "|----------------------------------------------------|"
@@ -84,10 +79,11 @@ cd ~/
 env -i curl -sS https://getcomposer.org/installer | php
 env -i sudo mv composer.phar /usr/local/bin/composer
 echo "\n"
-# Opcional
-echo "instalando o phpMyAdmin"
+echo "|----------------------------------------------------|"
+echo "##### => instalando o phpMyAdmin"
+echo "|----------------------------------------------------|"
 cd ~/
-env -i sudo apt-get install phpmyadmin --assume-yes --force-yes
+env -i sudo apt-get install phpmyadmin -y
 env -i sudo phpenmod mcrypt
 env -i sudo phpenmod mbstring
 sudo /etc/init.d/apache2 restart
@@ -137,9 +133,6 @@ env -i echo '<VirtualHost *:80>
 
 </VirtualHost>' > ~/padraoCECSERVER.conf
 env -i sudo mv padraoCECSERVER.conf /etc/apache2/sites-available/
-
-
-
 echo "\n"
 echo "#=============================================================================="
 echo "# AMBIENTE DE DESENVOLVIMENTO CRIADO"
@@ -147,11 +140,10 @@ echo "#=========================================================================
 echo "\n"
 cd ~/
 env -i sudo apt-get update 
-env -i sudo apt-get --assume-yes --force-yes upgrade 
-env -i sudo apt-get --assume-yes --force-yes clean
-env -i sudo apt-get --assume-yes --force-yes autoclean
+env -i sudo apt-get upgrade -y
+env -i sudo apt-get clean -y
+env -i sudo apt-get autoclean -y
 echo "\n"
-
 env -i echo '<?php phpinfo(); ?>' > ~/cecphp.php
 env -i sudo mv cecphp.php /var/www/html/
 xdg-open http://localhost/cecphp.php
@@ -159,6 +151,7 @@ lynx http://localhost/cecphp.php
 apache2 -v
 php -v
 mysql -V
+sudo cat /dev/null > ~/.bash_history
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"
