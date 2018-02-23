@@ -47,11 +47,17 @@ echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o PHP 7.1"
 echo "|----------------------------------------------------|"
-env -i sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
-env -i sudo apt-get update
+sudo apt-get install -y python-software-properties
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt-get update -y
+sudo apt-cache pkgnames | grep php7.1
 env -i sudo apt-get install php7.1 php7.1-common php-pear -y
 env -i sudo apt-get install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
-sudo apt-cache search php7.1
+sudo apt-cache pkgnames | grep php7.1
+sudo a2dismod php7.2 
+sudo a2enmod php7.1 
+sudo update-alternatives --set php /usr/bin/php7.1  
+php -i | grep /etc/php/7.1/apache2/php.ini
 php --ini
 sudo /etc/init.d/apache2 restart
 echo "\n"
