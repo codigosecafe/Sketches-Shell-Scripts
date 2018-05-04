@@ -29,9 +29,17 @@ env -i sudo apt-get install -y software-properties-common python-software-proper
 env -i sudo apt-get install -y curl unzip mcrypt git lynx vim aptitude
 echo "\n"
 echo "|----------------------------------------------------|"
-echo "##### => instalando MySQL"
+echo "##### => instalando MySQL 5.7"
 echo "|----------------------------------------------------|"
-env -i sudo apt-get install mysql-server mysql-client -y
+env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
+env -i sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+env -i sudo apt-get update
+env -i sudo apt-get install mysql-server
+env -i mysql_upgrade -u root -p --force
+env -i sudo service mysql stop
+env -i sudo usermod -d /var/lib/mysql/ mysql
+env -i sudo service mysql start
+#env -i sudo apt-get install mysql-server mysql-client -y
 echo "\n"
 echo "|----------------------------------------------------|"
 echo "##### => Instalando o Apache"
