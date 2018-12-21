@@ -98,5 +98,5 @@ case "$resposta" in
         echo "# => Operação interrupida"
     ;;
 esac
-
+sudo reboot
 exit 
