@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "\n\n"
 echo "#=============================================================================="
-echo "# title       : PROTEGER SERVIDORS"
+echo "# title       : PROTEGENDO SERVIDOR"
 echo "# description : CONFIGURANDO O SERVER PARA PREVINIR DE ATAQUES."
 echo "# author      : Claudio Alexssandro Lino"
 echo "# site        : http://cecdigitalmaker.com.br"
