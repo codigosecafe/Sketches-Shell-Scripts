@@ -10,7 +10,7 @@ check_folders()
   if [ ! -d "$folder" ]; then
    line "criando pasta $folder"
    mkdir $folder
-   check_folders $folder
+   # check_folders $folder
   fi  
 }
 check_file_init()
