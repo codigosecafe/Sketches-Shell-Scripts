@@ -1,4 +1,5 @@
 #!/bin/bash
+
 line()
 {
     msg=$1
@@ -9,7 +10,7 @@ check_folders()
   folder=$1
   if [ ! -d "$folder" ]; then
    line "criando pasta $folder"
-   mkdir $folder
+   mkdir -p "$folder"
    # check_folders $folder
   fi  
 }
@@ -21,24 +22,29 @@ check_file_init()
     if [ ! -f "$file" ]
     then
         line "baixando o arquivo"
-        wget -O - $url $name
-        mv $name $file
+        wget "$url"
+        line "movendo o arquivo"
+        mv "$name" "$file"
     fi
 }
 
 init_script(){
     # Checo se os diretorios existem
     line "Checando os diretórios do script"
-    check_folders ./incl/config_files
-    check_folders ./incl/scripts
-    check_folders ./incl/views
+    check_folders incl/config_files
+
+    check_folders incl/scripts
+    check_folders incl/views
     line "OK"
+    
     # Checo se os scripts existem
     line "Checando os arquivos do script"
-    check_file_init ./incl/views/header.sh 
+    check_file_init ./incl/views/header.sh header.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/incl/views/header.sh
     line "OK"
     line "Iniciando script"
-    clear
+    #exit
+    #clear
+
     sh ./incl/views/header.sh 
 }
 
