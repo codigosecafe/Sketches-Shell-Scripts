@@ -1,4 +1,11 @@
 
+## Instalação
+Para instalar diretamente da url, exucute o seguinte comando
+
+```
+wget -O - https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/master/install.sh | bash
+```
+
 ## ATENÇÃO
 Os arquivos presente neste repositório, passam por constante manutenção com forme aumento o meu conhecimento em Servidores baseados em Linux com Ubuntu. 
 
