@@ -40,12 +40,13 @@ init_script(){
     # Checo se os scripts existem
     line "Checando os arquivos do script"
     check_file_init ./incl/views/header.sh header.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/incl/views/header.sh
+    
+    check_file_init ./install_cec.sh install_cec.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/install_cec.sh
     line "OK"
     line "Iniciando script"
     #exit
-    #clear
-
-    sh ./incl/views/header.sh 
+    clear
+    sh ./install_cec.sh 
 }
 
 init_script
