@@ -100,7 +100,7 @@ init_script(){
         sleep 0.1
     } | whiptail --title "SEVER SETUP - CEC" --gauge "Aguarde enquanto preparamos tudo." 6 50 0
 
-    #exit
+    exit
    # clear
    bash ./cec-init.sh 
 }
