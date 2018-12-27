@@ -75,25 +75,29 @@ init_script(){
             check_file_init ./resouces/views/menu-recommendations-view.sh menu-recommendations-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-recommendations-view.sh
         sleep 0.1
 
-        echo -e "XXX\n45\nCHECANDO VIEWS -> menu-view.sh.\nXXX"
+        echo -e "XXX\n45\nCHECANDO VIEWS -> menu-uninstall-view.sh.\nXXX"
+            check_file_init ./resouces/views/menu-uninstall-view.sh menu-uninstall-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-uninstall-view.sh
+        sleep 0.1
+        
+        echo -e "XXX\n50\nCHECANDO VIEWS -> menu-view.sh.\nXXX"
             check_file_init ./resouces/views/menu-view.sh menu-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-view.sh
         sleep 0.1
 
         # Checo se os scripts
         
-        echo -e "XXX\n50\nCHECANDO SCRIPTS -> functions.sh.\nXXX"
+        echo -e "XXX\n55\nCHECANDO SCRIPTS -> functions.sh.\nXXX"
             check_file_init ./resouces/scripts/functions.sh functions.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/functions.sh
         sleep 0.1
         
-        echo -e "XXX\n55\nCHECANDO SCRIPTS -> install_resources.sh.\nXXX"
+        echo -e "XXX\n60\nCHECANDO SCRIPTS -> install_resources.sh.\nXXX"
             check_file_init ./resouces/scripts/install_resources.sh install_resources.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/install_resources.sh
         sleep 0.1
         
-        echo -e "XXX\n60\nCHECANDO SCRIPTS -> load_files.sh.\nXXX"
+        echo -e "XXX\n65\nCHECANDO SCRIPTS -> load_files.sh.\nXXX"
             check_file_init ./resouces/scripts/load_files.sh load_files.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/load_files.sh
         sleep 0.1
         
-        echo -e "XXX\n65\nCHECANDO SCRIPTS -> update-upgrade.sh.\nXXX"
+        echo -e "XXX\n70\nCHECANDO SCRIPTS -> update-upgrade.sh.\nXXX"
             check_file_init ./resouces/scripts/update-upgrade.sh update-upgrade.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/update-upgrade.sh
         sleep 0.1
     

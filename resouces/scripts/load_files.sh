@@ -11,6 +11,7 @@ source ./resouces/views/cancel-view.sh
 source ./resouces/views/exit-view.sh
 source ./resouces/views/home-view.sh
 source ./resouces/views/menu-recommendations-view.sh
+source ./resouces/views/menu-uninstall-view.sh
 source ./resouces/views/menu-view.sh
 
 
