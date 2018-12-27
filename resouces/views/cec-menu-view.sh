@@ -3,15 +3,15 @@ init_menu(){
 
     RESOUCES=$(whiptail --title "$TITLE_APP" --checklist \
                 "SELECIONE OS RECURSOS QUE DESEJA EXECUTAR!" 20 80 10 \
-                "Atualização" "Lê e atualiza os pacotes disponiveis" ON \
-                "Recursos" "Instala os recursos nescessários" ON \
-                "Apache2" "Instala o apache" ON \
-                "PHP" "Instala o PHP 7.1*" ON \
-                "MySQL" "Instala o servidor MySQL" ON \
-                "Firewall" "Configura o firewall" ON \
-                "SSH" "Configura o SSH" ON \
-                "Fail2ban" "Configura o Fail2ban" ON \
-                "Fish" "Instala o shell fish no sistema" ON 3>&1 1>&2 2>&3
+                "Atualização" "Lê e atualiza os pacotes disponiveis (Recomendado) " ON \
+                "Recursos" "Instala os recursos nescessários (Recomendado) " ON \
+                "Apache2" "Instala o apache" OFF \
+                "PHP" "Instala o PHP 7.1*" OFF \
+                "MySQL" "Instala o servidor MySQL" OFF \
+                "Firewall" "Configura o firewall" OFF \
+                "SSH" "Configura o SSH" OFF \
+                "Fail2ban" "Configura o Fail2ban" OFF \
+                "Fish" "Instala o shell fish no sistema" OFF 3>&1 1>&2 2>&3
             )
 
 status=$?
