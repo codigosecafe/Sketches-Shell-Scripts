@@ -79,34 +79,34 @@ init_script(){
         
         echo -e "XXX\n50\nCHECANDO SCRIPTS -> functions.sh.\nXXX"
             check_file_init ./resouces/scripts/functions.sh functions.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/functions.sh
-        sleep 1
+        sleep 0.1
         
         echo -e "XXX\n55\nCHECANDO SCRIPTS -> install_resources.sh.\nXXX"
             check_file_init ./resouces/scripts/install_resources.sh install_resources.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/install_resources.sh
-        sleep 1
+        sleep 0.1
         
         echo -e "XXX\n60\nCHECANDO SCRIPTS -> load_files.sh.\nXXX"
             check_file_init ./resouces/scripts/load_files.sh load_files.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/load_files.sh
-        sleep 1
+        sleep 0.1
         
         echo -e "XXX\n65\nCHECANDO SCRIPTS -> update-upgrade.sh.\nXXX"
             check_file_init ./resouces/scripts/update-upgrade.sh update-upgrade.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/update-upgrade.sh
-        sleep 1
+        sleep 0.1
 
 
         echo -e "XXX\n70\nCHECANDO SCRIPTS -> cec-init.sh.\nXXX"
             check_file_init ./cec-init.sh cec-init.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-init.sh
-        sleep 1
+        sleep 0.1
        
          
-         # Checo se os arquivos de configuração existem existem
-         echo -e "XXX\n95\nCHECANDO VIEWS -> fail2ban/jail.local.\nXXX"
+        # Checo se os arquivos de configuração existem existem
+        echo -e "XXX\n95\nCHECANDO VIEWS -> fail2ban/jail.local.\nXXX"
             check_file_init ./config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/config/fail2ban/jail.local
-         sleep 1
+        sleep 0.1
         
         echo -e "XXX\n100\nINICIANDO SCRIPTS.\nXXX"
-        sleep 1
-    } | whiptail --title "SEVER SETUP - CEC" --gauge "Aguarde enquanto preparamos tudo." 6 50 0
+        sleep 0.1
+    } | whiptail --title "SEVER SETUP - CEC" --gauge "Aguarde enquanto preparamos tudo." 6 100 0
 
     #exit
     # clear
