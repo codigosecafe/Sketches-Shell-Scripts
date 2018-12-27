@@ -34,8 +34,8 @@ init_script(){
         
         # Checo se os diretorios existem 
         progressbar=$progressbar+5
-        echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> resouces/config.\nXXX"
-            check_folders resouces/config
+        echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> ./config.\nXXX"
+            check_folders ./config
         sleep 0.2
 
         
@@ -66,7 +66,7 @@ init_script(){
 
          # Checo se os arquivos de configuração existem existem
          echo -e "XXX\n95\nCHECANDO SCRIPTS -> fail2ban/jail.local.\nXXX"
-            check_file_init ./resouces/config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/config/fail2ban/jail.local
+            check_file_init ./config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/config/fail2ban/jail.local
          sleep 0.2
         
         echo -e "XXX\n100\nINICIANDO SCRIPTS.\nXXX"
