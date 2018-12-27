@@ -89,22 +89,10 @@ init_script(){
             check_file_init ./resouces/scripts/functions.sh functions.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/functions.sh
         sleep 0.1
         
-        echo -e "XXX\n57\nCHECANDO SCRIPTS -> install_apache.sh.\nXXX"
-            check_file_init ./resouces/scripts/install_apache.sh install_apache.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/install_apache.sh
-        sleep 0.1
-        
-        echo -e "XXX\n60\nCHECANDO SCRIPTS -> install_resources.sh.\nXXX"
-            check_file_init ./resouces/scripts/install_resources.sh install_resources.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/install_resources.sh
-        sleep 0.1
-        
         echo -e "XXX\n65\nCHECANDO SCRIPTS -> load_files.sh.\nXXX"
             check_file_init ./resouces/scripts/load_files.sh load_files.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/load_files.sh
         sleep 0.1
-        
-        echo -e "XXX\n70\nCHECANDO SCRIPTS -> update-upgrade.sh.\nXXX"
-            check_file_init ./resouces/scripts/update-upgrade.sh update-upgrade.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/update-upgrade.sh
-        sleep 0.1
-    
+
         echo -e "XXX\n80\nCHECANDO SCRIPTS -> cec-init.sh.\nXXX"
             check_file_init ./cec-init.sh cec-init.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-init.sh
         sleep 0.1
