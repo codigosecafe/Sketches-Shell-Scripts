@@ -92,17 +92,18 @@ init_script(){
         echo -e "XXX\n65\nCHECANDO SCRIPTS -> update-upgrade.sh.\nXXX"
             check_file_init ./resouces/scripts/update-upgrade.sh update-upgrade.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/update-upgrade.sh
         sleep 0.1
-
+    
 
         echo -e "XXX\n70\nCHECANDO SCRIPTS -> cec-init.sh.\nXXX"
             check_file_init ./cec-init.sh cec-init.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-init.sh
         sleep 0.1
-       
+
          
         # Checo se os arquivos de configuração existem existem
         echo -e "XXX\n95\nCHECANDO VIEWS -> fail2ban/jail.local.\nXXX"
             check_file_init ./config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/config/fail2ban/jail.local
         sleep 20
+
         
         echo -e "XXX\n100\nINICIANDO SCRIPTS.\nXXX"
         sleep 0.1
