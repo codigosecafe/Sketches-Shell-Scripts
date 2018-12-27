@@ -23,7 +23,7 @@ view_menu_uninstall(){
         fi
 
         if  echo "$RESOUCES" | grep -q "MySQL"; then 
-            echo "MySQL"
+            fn_uninstall_MySQL
         fi
 
         if  echo "$RESOUCES" | grep -q "Fail2ban"; then 

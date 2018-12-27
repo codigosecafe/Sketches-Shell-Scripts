@@ -25,7 +25,8 @@ view_menu(){
         fi
         
         if  echo "$RESOUCES" | grep -q "MySQL"; then 
-            echo "fn_install_mysql"
+            fn_install_MySQL
+            
         fi
         
         if  echo "$RESOUCES" | grep -q "Composer"; then 

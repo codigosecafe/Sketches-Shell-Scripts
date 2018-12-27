@@ -29,7 +29,6 @@ fn_upgrade_dist(){
     echo "|----------------------------------------------------|"
     echo "##### => Atualiza a distribuição do sistema"
     echo "|----------------------------------------------------|"
-    fn_update_upgrade
     sudo apt-get -y dist-upgrade
 }
 
@@ -131,15 +130,43 @@ fn_install_MySQL(){
     echo "|----------------------------------------------------|"
     echo "##### => instalando MySQL 5.7"
     echo "|----------------------------------------------------|"
+
     cd ~/
-    env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
-    env -i sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+    env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+    env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
     sudo apt-get update
     sudo apt-get install -y mysql-server
     env -i mysql_upgrade -u root -p --force
     sudo service mysql stop
     sudo usermod -d /var/lib/mysql/ mysql
     sudo service mysql start
+
+# DEFAULTPASS="vagrant"
+# sudo debconf-set-selections <<EOF
+# mysql-server	mysql-server/root_password password $DEFAULTPASS
+# mysql-server	mysql-server/root_password_again password $DEFAULTPASS
+# dbconfig-common	dbconfig-common/mysql/app-pass password $DEFAULTPASS
+# dbconfig-common	dbconfig-common/mysql/admin-pass password $DEFAULTPASS
+# dbconfig-common	dbconfig-common/password-confirm password $DEFAULTPASS
+# dbconfig-common	dbconfig-common/app-password-confirm password $DEFAULTPASS
+# EOF
+
+
+    # cd ~/
+    # # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+    # # env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
+    # sudo apt update
+    # sudo apt install -y mysql-server mysql-client
+    # env -i mysql_upgrade -u root -p$DEFAULTPASS --force
+    #  sudo /etc/init.d/mysql stop
+    #  sudo usermod -d /var/lib/mysql/ mysql
+    #  sudo /etc/init.d/mysql start
+    #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    # sudo /etc/init.d/mysql restart
+    # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$DEFAULTPASS' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    # sudo /etc/init.d/mysql restart
+     
+exit
     #env -i sudo apt-get install mysql-server mysql-client -y
 }
 
@@ -147,25 +174,18 @@ fn_uninstall_MySQL(){
     clear
     cd ~/
     echo "|----------------------------------------------------|"
-    echo "##### => REMOVENDO o PHP"
+    echo "##### => REMOVENDO o MySQL"
     echo "|----------------------------------------------------|"
-   
-    sudo apt purge php7.1 php7.1-common php-pear -y
-    sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
-    sudo apt purge php* -y
-    sudo apt remove php* -y
+    sudo apt purge mysql* -y
+    sudo apt remove mysql* -y
 
     sudo apt autoremove -y
     sudo apt autoclean -y
+    echo "##### => REMOVE ARQUIVOS DO MySQL"
+    sudo rm -R -f -v /usr/bin/mysql 
+    sudo rm -R -f -v /usr/lib/mysql 
+    sudo rm -R -f -v /etc/mysql 
+    sudo rm -R -f -v /usr/share/mysql 
+    sudo rm -R -f -v /usr/share/man/man1/mysql.1.gz
 
-    echo "##### => REMOVE ARQUIVOS DO PHP"
-    sudo rm -R -f -v /etc/php
-    sudo rm -R -f -v /usr/lib/php 
-    sudo rm -R -f -v /usr/share/php*
-
-    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
-    then
-        echo "##### => REINICIANDO APACHE"
-        sudo /etc/init.d/apache2 restart
-    fi
 }
