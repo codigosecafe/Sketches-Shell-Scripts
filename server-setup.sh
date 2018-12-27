@@ -22,7 +22,7 @@ check_file_init()
     if [ ! -f "$file" ]
     then
         line "baixando o arquivo"
-        wget "$url"
+        wget -q "$url" 
         line "movendo o arquivo"
         mv "$name" "$file"
     fi
