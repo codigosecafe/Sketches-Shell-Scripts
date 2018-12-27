@@ -2,7 +2,7 @@
 
 view_home(){
     clear
-    OPTION=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --menu "BEM VINDO AO SCRIPT DE CONFIGURAÇÃO PARA SERVIDORES UBUNTU, ESSE SCRIPT FOI TESTADO NO S.O. UBUNTU 18. OQUE VOCÊ DESEJA FAZER?" 15 60 4 \
+    OPTION=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --menu "\nBEM VINDO AO SCRIPT DE CONFIGURAÇÃO PARA SERVIDORES UBUNTU, ESSE SCRIPT FOI TESTADO NO S.O. UBUNTU 18. OQUE VOCÊ DESEJA FAZER?" 15 60 4 \
         "1" "CONFIGURAR OU INSTALAR RECURSOS" \
         "2" "REMOVER RECURSOS INSTALADOS ANTERIOMENTE" \
         "3" "SAIR"  3>&1 1>&2 2>&3)

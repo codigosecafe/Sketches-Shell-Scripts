@@ -2,7 +2,7 @@
 view_menu(){
     clear
     RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
-                "SELECIONE OS RECURSOS QUE DESEJA EXECUTAR! É NESCESSARIO TER O VIM INSTALADO NO SISTEMA" 20 80 9 \
+                "\nSELECIONE OS RECURSOS QUE DESEJA EXECUTAR!" 20 80 9 \
                 "Apache2" "Instala o apache" OFF \
                 "PHP" "Instala o PHP 7.1.*" OFF \
                 "MySQL" "Instala o servidor MySQL" OFF \
@@ -21,7 +21,7 @@ view_menu(){
         fi
 
         if  echo "$RESOUCES" | grep -q "PHP"; then 
-            echo "fn_install_php"
+            fn_install_php
         fi
         
         if  echo "$RESOUCES" | grep -q "MySQL"; then 

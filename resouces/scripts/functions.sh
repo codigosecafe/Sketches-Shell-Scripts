@@ -40,7 +40,7 @@ fn_install_apache(){
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o Apache"
     echo "|----------------------------------------------------|"
-    sudo aptitude install apache2 -y
+    sudo apt install apache2 -y
     # sudo vim /etc/apache2/envvars
     echo "##### => MELHORANDO SEGURANÇA DO APACHE"
     sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
@@ -58,12 +58,121 @@ fn_uninstall_apache(){
     echo "|----------------------------------------------------|"
     echo "##### => Remover o Apache"
     echo "|----------------------------------------------------|"
-    sudo aptitude purge apache2 -y
-    sudo apt purge apache2 -y
+    sudo apt purge apache* -y
+    sudo apt remove apache* -y
+
+    sudo apt autoremove -y
     sudo apt autoclean -y
-    sudo rm -R -f /etc/apache2
-    sudo rm -R -f /var/lib/apache2
+
+    echo "##### => REMOVENDO ARQUIVOS DO APACHE"
+    sudo rm -R -f -v  /etc/apache2
+    sudo rm -R -f -v  /var/lib/apache2
+    sudo rm -R -f -v  /etc/init.d/apache2
+    sudo rm -R -f -v  /usr/sbin/apache2
 
 }
+#### FUNCOES DO PHP
+fn_install_php(){
+    clear
+    cd ~/
+    echo "|----------------------------------------------------|"
+    echo "##### => Instalando o PHP 7.1"
+    echo "|----------------------------------------------------|"
+    sudo apt install -y software-properties-common
+    sudo add-apt-repository -y ppa:ondrej/php
+    sudo apt update -y
+    sudo apt-cache pkgnames | grep php7.1
+    sudo apt install php7.1 php7.1-common php-pear -y
+    sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+    sudo apt-cache pkgnames | grep php7.1
+    sudo a2dismod php7.2 
+    sudo a2enmod php7.1 
+    sudo update-alternatives --set php /usr/bin/php7.1  
+    php -i | grep /etc/php/7.1/apache2/php.ini
+    php --ini
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
+}
 
+fn_uninstall_php(){
+    clear
+    cd ~/
+    echo "|----------------------------------------------------|"
+    echo "##### => REMOVENDO o PHP"
+    echo "|----------------------------------------------------|"
+   
+    sudo apt purge php7.1 php7.1-common php-pear -y
+    sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+    sudo apt purge php* -y
+    sudo apt remove php* -y
 
+    sudo apt autoremove -y
+    sudo apt autoclean -y
+
+    echo "##### => REMOVE ARQUIVOS DO PHP"
+    sudo rm -R -f -v /etc/php
+    sudo rm -R -f -v /usr/lib/php 
+    sudo rm -R -f -v /usr/share/php*
+
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
+}
+
+#### FUNCOES DO MySQl
+fn_install_MySQL(){
+    clear
+    cd ~/
+    echo "|----------------------------------------------------|"
+    echo "##### => Instalando o PHP 7.1"
+    echo "|----------------------------------------------------|"
+    sudo apt install -y software-properties-common
+    sudo add-apt-repository -y ppa:ondrej/php
+    sudo apt update -y
+    sudo apt-cache pkgnames | grep php7.1
+    sudo apt install php7.1 php7.1-common php-pear -y
+    sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+    sudo apt-cache pkgnames | grep php7.1
+    sudo a2dismod php7.2 
+    sudo a2enmod php7.1 
+    sudo update-alternatives --set php /usr/bin/php7.1  
+    php -i | grep /etc/php/7.1/apache2/php.ini
+    php --ini
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
+}
+
+fn_uninstall_MySQL(){
+    clear
+    cd ~/
+    echo "|----------------------------------------------------|"
+    echo "##### => REMOVENDO o PHP"
+    echo "|----------------------------------------------------|"
+   
+    sudo apt purge php7.1 php7.1-common php-pear -y
+    sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+    sudo apt purge php* -y
+    sudo apt remove php* -y
+
+    sudo apt autoremove -y
+    sudo apt autoclean -y
+
+    echo "##### => REMOVE ARQUIVOS DO PHP"
+    sudo rm -R -f -v /etc/php
+    sudo rm -R -f -v /usr/lib/php 
+    sudo rm -R -f -v /usr/share/php*
+
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
+}
