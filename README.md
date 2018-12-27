@@ -3,7 +3,7 @@
 Para instalar diretamente da url, exucute o seguinte comando
 
 ```
-wget -O -q - https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/server-setup.sh | bash
+wget -O - https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/server-setup.sh | bash
 ```
 
 ## ATENÇÃO
