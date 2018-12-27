@@ -24,7 +24,7 @@ check_file_init()
         line "baixando o arquivo"
         wget -q "$url" 
 
-        if [ $name -ne "cec-init.sh" ]
+        if [ ! "$name" == "cec-init.sh" ]
         then
             line "movendo o arquivo"
             mv "$name" "$file"
