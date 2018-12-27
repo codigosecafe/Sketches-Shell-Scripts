@@ -102,7 +102,7 @@ init_script(){
         # Checo se os arquivos de configuração existem existem
         echo -e "XXX\n95\nCHECANDO VIEWS -> fail2ban/jail.local.\nXXX"
             check_file_init ./config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/config/fail2ban/jail.local
-        sleep 0.1
+        sleep 20
         
         echo -e "XXX\n100\nINICIANDO SCRIPTS.\nXXX"
         sleep 0.1

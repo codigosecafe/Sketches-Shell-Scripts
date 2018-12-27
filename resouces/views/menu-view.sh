@@ -1,6 +1,6 @@
 #!/bin/bash
 view_menu(){
-
+    clear
     RESOUCES=$(whiptail --title "$TITLE_APP" --checklist \
                 "SELECIONE OS RECURSOS QUE DESEJA EXECUTAR!" 20 80 9 \
                 "Apache2" "Instala o apache" OFF \
