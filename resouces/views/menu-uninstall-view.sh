@@ -3,7 +3,7 @@ view_menu_uninstall(){
     clear
     RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
                 "SELECIONE OS RECURSOS QUE DESEJA REMOVER" 12 105 6 \
-                "Apache" "Remove o apache do sistema" OFF \
+                "Apache2" "Remove o apache do sistema" OFF \
                 "PHP" "Remove o PHP do sistema." OFF \
                 "MySQL" "Remove MySQL do sistema." OFF \
                 "Fail2ban" "Remove Fail2ban do sistema." OFF \
@@ -13,7 +13,7 @@ view_menu_uninstall(){
     if [ $status = 0 ]
     then
 
-        if  echo "$RESOUCES" | grep -q "Apache"; then 
+        if  echo "$RESOUCES" | grep -q "Apache2"; then 
             fn_uninstall_apache
             
         fi
@@ -34,7 +34,7 @@ view_menu_uninstall(){
             echo "Recursos"
         fi
         
-        view_menu
+        view_menu_uninstall
     else
         view_cancel 2
     fi

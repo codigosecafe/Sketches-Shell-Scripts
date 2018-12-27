@@ -17,7 +17,7 @@ view_menu(){
     then
 
         if  echo "$RESOUCES" | grep -q "Apache2"; then 
-            echo "fn_install_apache2"
+            fn_install_apache
         fi
 
         if  echo "$RESOUCES" | grep -q "PHP"; then 

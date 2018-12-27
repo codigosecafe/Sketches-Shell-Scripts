@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # CARREGA OS SCRIPTS
-source ./resouces/scripts/update-upgrade.sh
+source ./resouces/scripts/functions.sh
+source ./resouces/scripts/install_apache.sh
 source ./resouces/scripts/install_resources.sh
-
+source ./resouces/scripts/update-upgrade.sh
 
 # CARREGA AS VIEWS
 source ./resouces/views/about.sh

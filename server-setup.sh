@@ -89,7 +89,7 @@ init_script(){
             check_file_init ./resouces/scripts/functions.sh functions.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/functions.sh
         sleep 0.1
         
-        echo -e "XXX\n55\nCHECANDO SCRIPTS -> install_apache.sh.\nXXX"
+        echo -e "XXX\n57\nCHECANDO SCRIPTS -> install_apache.sh.\nXXX"
             check_file_init ./resouces/scripts/install_apache.sh install_apache.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/scripts/install_apache.sh
         sleep 0.1
         
