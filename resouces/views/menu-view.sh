@@ -1,10 +1,10 @@
 #!/bin/bash
 view_menu(){
     clear
-    RESOUCES=$(whiptail --title "$TITLE_APP" --checklist \
-                "SELECIONE OS RECURSOS QUE DESEJA EXECUTAR!" 20 80 9 \
+    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
+                "SELECIONE OS RECURSOS QUE DESEJA EXECUTAR! É NESCESSARIO TER O VIM INSTALADO NO SISTEMA" 20 80 9 \
                 "Apache2" "Instala o apache" OFF \
-                "PHP" "Instala o PHP 7.1*" OFF \
+                "PHP" "Instala o PHP 7.1.*" OFF \
                 "MySQL" "Instala o servidor MySQL" OFF \
                 "Composer" "Instala o composer" OFF \
                 "Firewall" "Configura o firewall (Recomendado) " OFF \

@@ -1,7 +1,7 @@
 #!/bin/bash
 view_menu_uninstall(){
     clear
-    RESOUCES=$(whiptail --title "$TITLE_APP" --checklist \
+    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
                 "SELECIONE OS RECURSOS QUE DESEJA REMOVER" 12 105 6 \
                 "Apache" "Remove o apache do sistema" OFF \
                 "PHP" "Remove o PHP do sistema." OFF \
@@ -14,7 +14,7 @@ view_menu_uninstall(){
     then
 
         if  echo "$RESOUCES" | grep -q "Apache"; then 
-            echo "Apache"
+            fn_uninstall_apache
             
         fi
 

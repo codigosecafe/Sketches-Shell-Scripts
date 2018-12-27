@@ -1,7 +1,7 @@
 #!/bin/bash
 view_menu_recommendations(){
     clear
-    RESOUCES=$(whiptail --title "$TITLE_APP" --checklist \
+    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
                 "SE ESSA FOR A PRIMEIRA VEZ QUE EXECULTA ESSE SCRIPT, RECOMENDO QUE EXECUTE TODAS ESSAS OPÇÕES! ESSE RECURSOS USAM O COMANDO SUDO PARA EXECUTAR" 12 105 4 \
                 "Update" "Lê e atualizando os pacotes do sistema" OFF \
                 "Upgrade" " Atualizando a distribução do sistema." OFF \
