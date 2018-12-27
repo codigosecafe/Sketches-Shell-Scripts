@@ -94,9 +94,9 @@ init_script(){
         sleep 0.1
     
 
-        echo -e "XXX\n70\nCHECANDO SCRIPTS -> cec-init.sh.\nXXX"
+        echo -e "XXX\n80\nCHECANDO SCRIPTS -> cec-init.sh.\nXXX"
             check_file_init ./cec-init.sh cec-init.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-init.sh
-        sleep 0.1
+        sleep 0.2
 
          
         # Checo se os arquivos de configuração existem existem
