@@ -34,26 +34,26 @@ init_script(){
         
         # Checo se os diretorios existem 
         progressbar=$progressbar+5
-        echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> cec-incl/cec-scripts.\nXXX"
-            check_folders cec-incl/cec-config-files
+        echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> resouces/config.\nXXX"
+            check_folders resouces/config
         sleep 0.2
 
         
-        echo -e "XXX\n10\nCHECANDO DIRETÓRIOS -> cec-incl/cec-scripts.\nXXX"
-            check_folders cec-incl/cec-scripts
+        echo -e "XXX\n10\nCHECANDO DIRETÓRIOS -> resouces/scripts.\nXXX"
+            check_folders resouces/scripts
         sleep 0.2
 
-        echo -e "XXX\n15\nCHECANDO DIRETÓRIOS -> cec-incl/cec-views.\nXXX"      
-            check_folders cec-incl/cec-views
+        echo -e "XXX\n15\nCHECANDO DIRETÓRIOS -> resouces/views.\nXXX"      
+            check_folders resouces/views
         sleep 0.2
 
         # Checo se os scripts existem
         echo -e "XXX\n20\nCHECANDO SCRIPTS -> cec-home-view.sh.\nXXX"
-            check_file_init ./cec-incl/cec-views/cec-home-view.sh cec-home-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-incl/cec-views/cec-home-view.sh
+            check_file_init ./resouces/views/cec-home-view.sh cec-home-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/cec-home-view.sh
         sleep 0.2
 
         echo -e "XXX\n25\nCHECANDO SCRIPTS -> cec-exit-view.sh.\nXXX"
-            check_file_init ./cec-incl/cec-views/cec-exit-view.sh cec-exit-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-incl/cec-views/cec-exit-view.sh
+            check_file_init ./resouces/views/cec-exit-view.sh cec-exit-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/cec-exit-view.sh
         sleep 0.2
 
         echo -e "XXX\n30\nCHECANDO SCRIPTS -> cec-installer.sh.\nXXX"
@@ -61,12 +61,12 @@ init_script(){
         sleep 0.2
 
         echo -e "XXX\n35\nCHECANDO SCRIPTS -> cec-menu-view.sh.\nXXX"
-            check_file_init ./cec-incl/cec-views/cec-menu-view.sh cec-menu-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-incl/cec-views/cec-menu-view.sh
+            check_file_init ./resouces/views/cec-menu-view.sh cec-menu-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/cec-menu-view.sh
         sleep 0.2
 
          # Checo se os arquivos de configuração existem existem
          echo -e "XXX\n95\nCHECANDO SCRIPTS -> fail2ban/jail.local.\nXXX"
-            check_file_init ./cec-incl/cec-config-files/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/cec-incl/cec-config-files/fail2ban/jail.local
+            check_file_init ./resouces/config/fail2ban/jail.local jail.local https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/config/fail2ban/jail.local
          sleep 0.2
         
         echo -e "XXX\n100\nINICIANDO SCRIPTS.\nXXX"
