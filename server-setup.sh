@@ -23,8 +23,12 @@ check_file_init()
     then
         line "baixando o arquivo"
         wget -q "$url" 
-        line "movendo o arquivo"
-        mv "$name" "$file"
+
+        if [ $name -ne "cec-init.sh" ]
+        then
+            line "movendo o arquivo"
+            mv "$name" "$file"
+        fi
     fi
 }
 
