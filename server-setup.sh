@@ -37,7 +37,7 @@ init_script(){
         echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> ./config.\nXXX"
             check_folders ./config
         sleep 0.1
-        echo -e "XXX\n5\nCHECANDO DIRETÓRIOS -> ./config/fail2ban.\nXXX"
+        echo -e "XXX\n7\nCHECANDO DIRETÓRIOS -> ./config/fail2ban.\nXXX"
             check_folders ./config/fail2ban
         sleep 0.1
 
