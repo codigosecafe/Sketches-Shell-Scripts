@@ -208,11 +208,14 @@ fn_install_composer(){
     echo "##### => Instalar o Composer"
     echo "|----------------------------------------------------|"
     cd ~/
+
+    if [ "$(which php)" != "/usr/bin/php" ]
+    then
+        fn_install_php
+    fi
+
     env -i curl -sS https://getcomposer.org/installer | php
     env -i sudo mv composer.phar /usr/local/bin/composer
-
-   
-    
 }
 
 fn_uninstall_composer(){
