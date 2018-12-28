@@ -133,7 +133,7 @@ fn_install_MySQL(){
     echo "|----------------------------------------------------|"
     cd ~/
 
-    if ! grep "http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main" /etc/apt/sources.list > /dev/null
+     if ! grep "http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main" /etc/apt/sources.list > /dev/null
     then
         sudo apt-get install software-properties-common
         sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
@@ -142,12 +142,12 @@ fn_install_MySQL(){
     fi
     sudo apt update
 
-    sudo debconf-set-selections <<< "maria-db-10.3 mysql-server/root_password password $PASSWORD"
-    sudo debconf-set-selections <<< "maria-db-10.3 mysql-server/root_password_again password $PASSWORD"
+    sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password password $PASSWORD"
+    sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password_again password $PASSWORD"
 
     sudo apt install mariadb-server -qq --assume-yes
    
-    sudo mysql_upgrade -u root -p"$DEFAULTPASS" --force
+    sudo mysql_upgrade -u root -p"$PASSWORD" --force
     sudo /etc/init.d/mysql stop
     sudo usermod -d /var/lib/mysql/ mysql
 
@@ -167,6 +167,44 @@ fn_install_MySQL(){
 
     $MYSQL -uroot -p$PASSWORD -e "$SQL"
     sudo /etc/init.d/mysql restart
+
+    # sudo apt update
+    # sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
+    # sleep 2
+    # sudo mysql -u root -e "use mysql; update user set plugin=' ' where User='root';flush privileges;"
+    # sudo /etc/init.d/mysql restart
+    # sudo mysql -u root -e "update user set password=PASSWORD('$PASSWORD') where User='root';"
+    # sudo /etc/init.d/mysql restart
+    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
+
+    # sudo mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    
+    # sudo /etc/init.d/mysql restart
+    
+    
+    
+    
+    # env -i mysql_upgrade -u root -p --force
+
+
+    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    # mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    # sudo /etc/init.d/mysql restart
+
+    # cd ~/
+    # # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+    # # env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
+    # sudo apt update
+    # sudo apt install -y mysql-server mysql-client
+    # env -i mysql_upgrade -u root -p$DEFAULTPASS --force
+    #  sudo /etc/init.d/mysql stop
+    #  sudo usermod -d /var/lib/mysql/ mysql
+    #  sudo /etc/init.d/mysql start
+    #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+    # sudo /etc/init.d/mysql restart
+    # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    # sudo /etc/init.d/mysql restart
+     
 exit
 
 }
