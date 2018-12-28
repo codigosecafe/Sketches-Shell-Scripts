@@ -1,11 +1,11 @@
 #!/bin/bash
 view_menu_uninstall(){
     clear
-    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
+    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" --checklist \
                 "\nSELECIONE OS RECURSOS QUE DESEJA REMOVER" 15 72 6 \
                 "Apache2" "Remove o apache do sistema " OFF \
                 "PHP" "Remove o PHP do sistema. " OFF \
-                "MySQL" "Remove MySQL do sistema. " OFF \
+                "MariaDB" "Remove MariaDB (MySQL) do sistema. " OFF \
                 "Fail2ban" "Remove Fail2ban do sistema. " OFF \
                 "Recursos" "Remove alguns pacotes adicionados anteriormente. " OFF 3>&1 1>&2 2>&3
             )
@@ -22,8 +22,8 @@ view_menu_uninstall(){
             fn_uninstall_php
         fi
 
-        if  echo "$RESOUCES" | grep -q "MySQL"; then 
-            fn_uninstall_MySQL
+        if  echo "$RESOUCES" | grep -q "MariaDB"; then 
+            fn_uninstall_MariaDB
         fi
 
         if  echo "$RESOUCES" | grep -q "Fail2ban"; then 

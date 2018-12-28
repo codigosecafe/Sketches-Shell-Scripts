@@ -64,10 +64,10 @@ fn_uninstall_apache(){
     sudo apt autoclean --assume-yes --force-yes
 
     echo "##### => REMOVENDO ARQUIVOS DO APACHE"
-    sudo rm -R -f -v  /etc/apache2
-    sudo rm -R -f -v  /var/lib/apache2
-    sudo rm -R -f -v  /etc/init.d/apache2
-    sudo rm -R -f -v  /usr/sbin/apache2
+    sudo rm -Rfv  /etc/apache2
+    sudo rm -Rfv  /var/lib/apache2
+    sudo rm -Rfv  /etc/init.d/apache2
+    sudo rm -Rfv  /usr/sbin/apache2
 
 }
 #### FUNCOES DO PHP
@@ -112,9 +112,9 @@ fn_uninstall_php(){
     sudo apt autoclean --assume-yes --force-yes
 
     echo "##### => REMOVE ARQUIVOS DO PHP"
-    sudo rm -R -f -v /etc/php
-    sudo rm -R -f -v /usr/lib/php 
-    sudo rm -R -f -v /usr/share/php*
+    sudo rm -Rfv /etc/php
+    sudo rm -Rfv /usr/lib/php 
+    sudo rm -Rfv /usr/share/php*
 
     if [ "$(which apache2)" == "/usr/sbin/apache2" ]
     then
@@ -124,7 +124,7 @@ fn_uninstall_php(){
 }
 
 #### FUNCOES DO MySQl
-fn_install_MySQL(){
+fn_install_MariaDB(){
    
     clear
     PASSWORD=$1
@@ -174,32 +174,27 @@ fn_install_MySQL(){
         echo "##### => REINICIANDO APACHE"
         sudo /etc/init.d/apache2 restart
     fi
-     
-    sleep 1
-    exit
-
+    
 }
 
-fn_uninstall_MySQL(){
+fn_uninstall_MariaDB(){
     clear
     cd ~/
     echo "|----------------------------------------------------|"
     echo "##### => REMOVENDO MariaDB"
     echo "|----------------------------------------------------|"
      
-     sudo apt -y purge mariadb-server mariadb-client
-     sudo apt -y remove mariadb-server mariadb-client
-     
-     
-     sudo apt autoremove -y
-     sudo apt autoclean -y
+    sudo apt -y purge mariadb-server mariadb-client
+    sudo apt -y remove mariadb-server mariadb-client
+    
+    sudo apt autoremove -y
+    sudo apt autoclean -y
 
-     sudo rm -Rfv $(which mysql)
+    sudo rm -Rfv $(which mysql)
 
     if [ "$(which apache2)" == "/usr/sbin/apache2" ]
     then
         echo "##### => REINICIANDO APACHE"
         sudo /etc/init.d/apache2 restart
-    fi
-     
+    fi 
 }

@@ -2,7 +2,7 @@
 view_cancel(){
     clear
     MSG="DESEJA SAIR DO SETUP DE CONFIGURAÇÂO?"
-    if (whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --yes-button "NÃO" --no-button "SIM"  --yesno "$MSG" 8 78); then
+    if (whiptail --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" --yes-button "NÃO" --no-button "SIM"  --yesno "$MSG" 8 78); then
         TYPE_MENU=$1
         if [ $TYPE_MENU = "1" ];
         then

@@ -1,11 +1,11 @@
 #!/bin/bash
 view_menu(){
     clear
-    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --checklist \
+    RESOUCES=$(whiptail --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" --checklist \
                 "\nSELECIONE OS RECURSOS QUE DESEJA EXECUTAR!" 20 80 9 \
                 "Apache2" "Instala o apache" OFF \
                 "PHP" "Instala o PHP 7.1.*" OFF \
-                "MySQL" "Instala o servidor MySQL" OFF \
+                "MariaDB" "Instala o servidor do banco de dados MariaDB (MySQL)" OFF \
                 "Composer" "Instala o composer" OFF \
                 "Firewall" "Configura o firewall (Recomendado) " OFF \
                 "SSH" "Configura o SSH (Recomendado) " OFF \
@@ -24,12 +24,12 @@ view_menu(){
             fn_install_php
         fi
         
-        if  echo "$RESOUCES" | grep -q "MySQL"; then 
+        if  echo "$RESOUCES" | grep -q "MariaDB"; then 
            
-            PASSWORD=$(whiptail --passwordbox "\nDEFINA A SENHA DO USUARIO ROOT DO MySQL" 8 78 --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" 3>&1 1>&2 2>&3)
+            PASSWORD=$(whiptail --passwordbox "\nDEFINA A SENHA DO USUARIO ROOT DO MariaDB (MySQL)" 8 78 --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" 3>&1 1>&2 2>&3)
             exitstatus=$?
             if [ $exitstatus = 0 ]; then
-                fn_install_MySQL $PASSWORD
+                fn_install_MariaDB $PASSWORD
             fi
         fi
         

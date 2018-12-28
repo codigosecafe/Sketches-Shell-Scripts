@@ -6,7 +6,7 @@ view_close(){
         sleep 0.1
         echo $i
       done
-   } | whiptail --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" --gauge "Obrigado por usar o script, quero que ele se torne algo util para muitos desenvolvedoress." 7 80 0
+   } | whiptail --backtitle "$TITLE_APP_BACK" --gauge "Obrigado por usar o script, quero que ele se torne algo util para muitos desenvolvedoress." 7 80 0
    about
    exit
 }
