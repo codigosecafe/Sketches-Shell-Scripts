@@ -125,19 +125,30 @@ fn_uninstall_php(){
 
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
-    fn_update_upgrade
+
     clear
     PASSWORD=$1
     echo "|----------------------------------------------------|"
-    echo "##### => instalando MySQL 5.7"
+    echo "##### => instalando MariaDB"
     echo "|----------------------------------------------------|"
 
     cd ~/
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+    sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.3/ubuntu bionic main'
+    sudo apt update
 
-    sudo aptitude update
-    sudo aptitude install mysql-server-5.7
+    sudo apt install mariadb-server
+
     sudo mysql_secure_installation
-    env -i mysql_upgrade -u root -p --force
+    
+    
+    
+    
+    
+    
+    
+    
+    # env -i mysql_upgrade -u root -p --force
 
 
     # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
