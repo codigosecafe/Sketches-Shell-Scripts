@@ -133,8 +133,8 @@ fn_install_MySQL(){
 
     cd ~/
 
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
+    # sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
+    # sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
     sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $PASSWORD"
     sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/re-root-pass password $PASSWORD"
 
@@ -142,7 +142,8 @@ fn_install_MySQL(){
     env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
     env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
     sudo apt-get update
-    sudo apt-get install -y mysql-server
+   # sudo apt-get install -y mysql-server
+    sudo apt-get install -y mysql-community-server
     env -i mysql_upgrade -u root -p"$PASSWORD" --force
     sudo service mysql stop
     sudo usermod -d /var/lib/mysql/ mysql
