@@ -125,6 +125,7 @@ fn_uninstall_php(){
 
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
+    fn_update_upgrade
     clear
     PASSWORD=$1
     echo "|----------------------------------------------------|"
@@ -137,12 +138,12 @@ fn_install_MySQL(){
     # sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
     # sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $PASSWORD"
     # sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/re-root-pass password $PASSWORD"
-    chown -R mysql /var/lib/mysql
+
     
-    env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
-    env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
+    # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+    # env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
     sudo apt-get update
-    sudo apt-get install -y mysql-server
+    sudo apt-get install mysql-server-5.7
    # sudo apt-get install -y mysql-community-server
     env -i mysql_upgrade -u root -p"$PASSWORD" --force
    # env -i mysql_upgrade -u root -p --force
@@ -150,9 +151,9 @@ fn_install_MySQL(){
     sudo usermod -d /var/lib/mysql/ mysql
     sudo usermod -a -G mysql $USER
     sudo service mysql start
-    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
-    # mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-    # sudo /etc/init.d/mysql restart
+    sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    sudo /etc/init.d/mysql restart
 
     # cd ~/
     # # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
@@ -178,24 +179,17 @@ fn_uninstall_MySQL(){
     echo "|----------------------------------------------------|"
     echo "##### => REMOVENDO o MySQL"
     echo "|----------------------------------------------------|"
-    sudo apt purge mysql* -y
-    sudo apt remove mysql* -y
-
-    sudo apt-get purge mysql-apt-config -y
-    sudo apt-get remove mysql-apt-config -y
-
+    sudo apt-get remove --purge mysql*
+    sudo apt-get purge mysql*
     sudo apt autoremove -y
     sudo apt autoclean -y
+    sudo apt-get remove dbconfig-mysql
 
    
-
+    sudo apt autoremove -y
+    sudo apt autoclean -y
     echo "##### => REMOVE ARQUIVOS DO MySQL"
     
-    sudo rm -R -f -v /usr/bin/mysql 
-    sudo rm -R -f -v /usr/lib/mysql 
-    sudo rm -R -f -v /etc/mysql 
-    sudo rm -R -f -v /usr/share/mysql 
-    sudo rm -R -f -v /usr/share/man/man1/mysql.1.gz
-    sudo rm -R -f -v /var/run/mysqld
+    
 
 }
