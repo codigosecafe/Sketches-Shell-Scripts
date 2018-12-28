@@ -25,8 +25,12 @@ view_menu(){
         fi
         
         if  echo "$RESOUCES" | grep -q "MySQL"; then 
-            fn_install_MySQL
-            
+           
+            PASSWORD=$(whiptail --passwordbox "\nDEFINA A SENHA DO USUARIO ROOT DO MySQL" 8 78 --title "$TITLE_APP" --backtitle "Claudio Alexssandro Lino <https://github.com/codigosecafe/meus-shell-scripts/>" 3>&1 1>&2 2>&3)
+            exitstatus=$?
+            if [ $exitstatus = 0 ]; then
+                fn_install_MySQL $PASSWORD
+            fi
         fi
         
         if  echo "$RESOUCES" | grep -q "Composer"; then 

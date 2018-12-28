@@ -126,31 +126,30 @@ fn_uninstall_php(){
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
     clear
-    cd ~/
+    PASSWORD=$1
     echo "|----------------------------------------------------|"
     echo "##### => instalando MySQL 5.7"
     echo "|----------------------------------------------------|"
 
     cd ~/
+
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/re-root-pass password $PASSWORD"
+
+    
     env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
     env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
     sudo apt-get update
     sudo apt-get install -y mysql-server
-    env -i mysql_upgrade -u root -p --force
+    env -i mysql_upgrade -u root -p"$PASSWORD" --force
     sudo service mysql stop
     sudo usermod -d /var/lib/mysql/ mysql
     sudo service mysql start
-
-# DEFAULTPASS="vagrant"
-# sudo debconf-set-selections <<EOF
-# mysql-server	mysql-server/root_password password $DEFAULTPASS
-# mysql-server	mysql-server/root_password_again password $DEFAULTPASS
-# dbconfig-common	dbconfig-common/mysql/app-pass password $DEFAULTPASS
-# dbconfig-common	dbconfig-common/mysql/admin-pass password $DEFAULTPASS
-# dbconfig-common	dbconfig-common/password-confirm password $DEFAULTPASS
-# dbconfig-common	dbconfig-common/app-password-confirm password $DEFAULTPASS
-# EOF
-
+    sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    sudo /etc/init.d/mysql restart
 
     # cd ~/
     # # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
@@ -163,7 +162,7 @@ fn_install_MySQL(){
     #  sudo /etc/init.d/mysql start
     #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
     # sudo /etc/init.d/mysql restart
-    # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$DEFAULTPASS' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     # sudo /etc/init.d/mysql restart
      
 exit
