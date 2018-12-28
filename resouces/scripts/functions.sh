@@ -135,11 +135,15 @@ fn_install_MySQL(){
 
     sudo apt update
     sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
+    sleep 2
+    sudo mysql -u root -e "use mysql; update user set plugin=' ' where User='root';flush privileges;"
+    sudo mysql -u root -e "update user set password=PASSWORD('$PASSWORD') where User='root';"
 
+    sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+    mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     
-    
-    
-    
+    sudo /etc/init.d/mysql restart
     
     
     
@@ -160,7 +164,7 @@ fn_install_MySQL(){
     #  sudo /etc/init.d/mysql stop
     #  sudo usermod -d /var/lib/mysql/ mysql
     #  sudo /etc/init.d/mysql start
-    #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+    #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
     # sudo /etc/init.d/mysql restart
     # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     # sudo /etc/init.d/mysql restart
