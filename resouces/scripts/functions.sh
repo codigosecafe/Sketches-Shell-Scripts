@@ -144,14 +144,12 @@ fn_install_MySQL(){
     sudo apt-get update
     sudo apt-get install -y mysql-server
    # sudo apt-get install -y mysql-community-server
-   # env -i mysql_upgrade -u root -p"$PASSWORD" --force
-    
-    # sudo service mysql stop
-    sudo usermod -a -G mysql "$(logname)"
-    env -i mysql_upgrade -u root -p --force
-
-    # sudo usermod -d /var/lib/mysql/ mysql
-    # sudo service mysql start
+    env -i mysql_upgrade -u root -p"$PASSWORD" --force
+   # env -i mysql_upgrade -u root -p --force
+    sudo service mysql stop
+    sudo usermod -d /var/lib/mysql/ mysql
+    sudo usermod -a -G mysql $USER
+    sudo service mysql start
     # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
     # mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     # sudo /etc/init.d/mysql restart
