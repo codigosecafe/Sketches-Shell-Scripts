@@ -165,7 +165,7 @@ fn_install_MySQL(){
     Q2="FLUSH PRIVILEGES;"
     SQL="${Q1}${Q2}"
 
-    $MYSQL -uroot -p$PASSWORD -e "$SQL"
+    sudo $MYSQL -uroot -p$PASSWORD -e "$SQL"
     sudo /etc/init.d/mysql restart
 
     # sudo apt update
@@ -204,6 +204,12 @@ fn_install_MySQL(){
     # sudo /etc/init.d/mysql restart
     # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     # sudo /etc/init.d/mysql restart
+
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
      
 exit
 
@@ -215,11 +221,20 @@ fn_uninstall_MySQL(){
     echo "|----------------------------------------------------|"
     echo "##### => REMOVENDO MariaDB"
     echo "|----------------------------------------------------|"
-    
+     
      sudo apt -y purge mariadb-server mariadb-client
      sudo apt -y remove mariadb-server mariadb-client
+     
+     
      sudo apt autoremove -y
      sudo apt autoclean -y
 
+     sudo rm -Rfv $(which mysql)
+
+    if [ "$(which apache2)" == "/usr/sbin/apache2" ]
+    then
+        echo "##### => REINICIANDO APACHE"
+        sudo /etc/init.d/apache2 restart
+    fi
      
 }
