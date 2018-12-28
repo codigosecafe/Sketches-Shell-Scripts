@@ -34,7 +34,13 @@ fn_upgrade_dist(){
 
 #### FUNCOES DO APACHE
 fn_install_apache(){
+    sudo rm /var/lib/apt/lists/lock
+    sudo rm /var/cache/apt/archives/lock
+    sudo rm /var/lib/dpkg/lock
+    sudo dpkg --configure -a
+    fn_update_upgrade
     clear
+    
     cd ~/
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o Apache"
@@ -72,6 +78,10 @@ fn_uninstall_apache(){
 }
 #### FUNCOES DO PHP
 fn_install_php(){
+    sudo rm /var/lib/apt/lists/lock
+    sudo rm /var/cache/apt/archives/lock
+    sudo rm /var/lib/dpkg/lock
+    sudo dpkg --configure -a
     clear
     cd ~/
     echo "|----------------------------------------------------|"
@@ -79,7 +89,7 @@ fn_install_php(){
     echo "|----------------------------------------------------|"
     sudo apt install -y software-properties-common
     sudo add-apt-repository -y ppa:ondrej/php
-    sudo apt update -y
+    fn_update_upgrade
     sudo apt-cache pkgnames | grep php7.1
     sudo apt install php7.1 php7.1-common php-pear -y
     sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
@@ -124,6 +134,12 @@ fn_uninstall_php(){
 
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
+
+    sudo rm /var/lib/apt/lists/lock
+    sudo rm /var/cache/apt/archives/lock
+    sudo rm /var/lib/dpkg/lock
+    sudo dpkg --configure -a
+
     clear
     PASSWORD=$1
     echo "|----------------------------------------------------|"
@@ -140,7 +156,7 @@ fn_install_MySQL(){
     
     env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
     env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
-    sudo apt-get update
+    fn_update_upgrade
     sudo apt-get install -y mysql-server
    # sudo apt-get install -y mysql-community-server
     env -i mysql_upgrade -u root -p"$PASSWORD" --force
