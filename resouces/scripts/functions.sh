@@ -136,7 +136,7 @@ fn_install_MySQL(){
     sudo add-apt-repository 'deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu bionic main'
     sudo dpkg --configure -a
     sudo apt update
-    sudo apt install mariadb-server mariadb-client
+    sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
 
     
     
