@@ -134,10 +134,10 @@ fn_install_MySQL(){
 
     cd ~/
 
-    # sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
-    # sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-    # sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $PASSWORD"
-    # sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/re-root-pass password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $PASSWORD"
+    sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/re-root-pass password $PASSWORD"
 
     
     # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
@@ -190,6 +190,11 @@ fn_uninstall_MySQL(){
     sudo apt autoclean -y
     echo "##### => REMOVE ARQUIVOS DO MySQL"
     
-    
+    sudo rm -R -f -v /usr/bin/mysql 
+    sudo rm -R -f -v /usr/lib/mysql 
+    sudo rm -R -f -v /etc/mysql 
+    sudo rm -R -f -v /usr/share/mysql 
+    sudo rm -R -f -v /usr/share/man/man1/mysql.1.gz
+    sudo rm -R -f -v /var/run/mysqld
 
 }
