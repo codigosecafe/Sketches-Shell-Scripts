@@ -105,8 +105,7 @@ fn_uninstall_php(){
    
     sudo apt purge php7.1 php7.1-common php-pear -y
     sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
-    sudo apt purge php* -y
-    sudo apt remove php* -y
+    sudo apt-get remove --purge php\* -y
 
     sudo apt autoremove -y
     sudo apt autoclean -y
