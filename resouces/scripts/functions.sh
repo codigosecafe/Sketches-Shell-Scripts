@@ -125,21 +125,18 @@ fn_uninstall_php(){
 
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
-
+    sudo apt-get install software-properties-common
     clear
     PASSWORD=$1
     echo "|----------------------------------------------------|"
     echo "##### => instalando MariaDB"
     echo "|----------------------------------------------------|"
-
     cd ~/
     sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-    sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.3/ubuntu bionic main'
+    sudo add-apt-repository 'deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu bionic main'
     sudo apt update
+    sudo apt install mariadb-server mariadb-client -y
 
-    sudo apt install mariadb-server
-
-    sudo mysql_secure_installation
     
     
     
@@ -177,19 +174,13 @@ fn_uninstall_MySQL(){
     clear
     cd ~/
     echo "|----------------------------------------------------|"
-    echo "##### => REMOVENDO o MySQL"
+    echo "##### => REMOVENDO MariaDB"
     echo "|----------------------------------------------------|"
-    sudo apt-get remove --purge mysql* -y
-    sudo apt-get purge mysql*
-    sudo apt autoremove -y
-    sudo apt autoclean -y
-
-
-   
-    sudo apt autoremove -y
-    sudo apt autoclean -y
-    echo "##### => REMOVE ARQUIVOS DO MySQL"
     
-    sudo rm -Rvf /usr/bin/mysql /usr/lib/mysql /etc/mysql /usr/share/mysql /usr/share/man/man1/mysql.1.gz /var/lib/mysql-files /var/lib/mysql-keyring
+     sudo apt -y purge mariadb-server mariadb-client
+     sudo apt -y remove mariadb-server mariadb-client
+     sudo apt autoremove -y
+     sudo apt autoclean -y
 
+     
 }
