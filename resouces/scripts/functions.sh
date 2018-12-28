@@ -125,7 +125,7 @@ fn_uninstall_php(){
 
 #### FUNCOES DO MySQl
 fn_install_MySQL(){
-    sudo apt-get install software-properties-common
+   
     clear
     PASSWORD=$1
     echo "|----------------------------------------------------|"
@@ -133,18 +133,33 @@ fn_install_MySQL(){
     echo "|----------------------------------------------------|"
     cd ~/
 
+    if ! grep "http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main" /etc/apt/sources.list > /dev/null
+    then
+        sudo apt-get install software-properties-common
+        sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+        sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main'
+        fn_update_upgrade
+    fi
     sudo apt update
-    sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
-    sleep 2
-    sudo mysql -u root -e "use mysql; update user set plugin=' ' where User='root';flush privileges;"
-    sudo /etc/init.d/mysql restart
-    sudo mysql -u root -e "update user set password=PASSWORD('$PASSWORD') where User='root';"
-    sudo /etc/init.d/mysql restart
-    sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
-
-    sudo mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    sudo apt install mariadb-server --assume-yes
+   
     
-    sudo /etc/init.d/mysql restart
+
+
+
+
+    # sudo apt update
+    # sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
+    # sleep 2
+    # sudo mysql -u root -e "use mysql; update user set plugin=' ' where User='root';flush privileges;"
+    # sudo /etc/init.d/mysql restart
+    # sudo mysql -u root -e "update user set password=PASSWORD('$PASSWORD') where User='root';"
+    # sudo /etc/init.d/mysql restart
+    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+    # sudo mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    
+    # sudo /etc/init.d/mysql restart
     
     
     
