@@ -168,17 +168,17 @@ fn_uninstall_MySQL(){
     echo "|----------------------------------------------------|"
     echo "##### => REMOVENDO o MySQL"
     echo "|----------------------------------------------------|"
-    sudo apt-get remove --purge mysql\* -y
+    sudo apt-get remove --purge mysql* -y
     sudo apt-get purge mysql*
     sudo apt autoremove -y
     sudo apt autoclean -y
-    sudo apt-get remove dbconfig-mysql -y
+
 
    
     sudo apt autoremove -y
     sudo apt autoclean -y
     echo "##### => REMOVE ARQUIVOS DO MySQL"
     
-    sudo rm -Rvf /usr/bin/mysql /usr/lib/mysql /etc/mysql /usr/share/mysql /usr/share/man/man1/mysql.1.gz
+    sudo rm -Rvf /usr/bin/mysql /usr/lib/mysql /etc/mysql /usr/share/mysql /usr/share/man/man1/mysql.1.gz /var/lib/mysql-files /var/lib/mysql-keyring
 
 }
