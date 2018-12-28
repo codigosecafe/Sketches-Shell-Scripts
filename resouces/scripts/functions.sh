@@ -141,69 +141,33 @@ fn_install_MySQL(){
         fn_update_upgrade
     fi
     sudo apt update
-
+    echo "##### => Adicionando a senha do usuario root ao MariaDB"
     sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password password $PASSWORD"
     sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password_again password $PASSWORD"
-
     sudo apt install mariadb-server -qq --assume-yes
-   
+    echo "##### => Atualizando as tabelas do banco de dados"
     sudo mysql_upgrade -u root -p"$PASSWORD" --force
+    echo "##### => Parando MariaDB"
     sudo /etc/init.d/mysql stop
+    
+    echo "##### => Configurando o /etc/mysql/my.cnf"
     sudo usermod -d /var/lib/mysql/ mysql
-
     cp /etc/mysql/my.cnf ~/my.cnf.backup
     sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
     sudo sed -i 's/max_connections		= 100/max_connections		= 400/' /etc/mysql/my.cnf
     sudo sed -i 's/innodb_buffer_pool_size = 256M/innodb_buffer_pool_size = 2G/' /etc/mysql/my.cnf
     sudo sed -i 's/#innodb_log_file_size   = 50M/innodb_log_file_size = 128M/' /etc/mysql/my.cnf
-    
+    echo "##### => Iniciando o MariaDB"
     sudo /etc/init.d/mysql start
 
+    echo "##### => Redefinindo as permições do usuario root"
     MYSQL=$(which mysql)
-
     Q1="GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION;"
     Q2="FLUSH PRIVILEGES;"
     SQL="${Q1}${Q2}"
-
     sudo $MYSQL -uroot -p$PASSWORD -e "$SQL"
+     echo "##### => Reiniciando o MariaDB"
     sudo /etc/init.d/mysql restart
-
-    # sudo apt update
-    # sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
-    # sleep 2
-    # sudo mysql -u root -e "use mysql; update user set plugin=' ' where User='root';flush privileges;"
-    # sudo /etc/init.d/mysql restart
-    # sudo mysql -u root -e "update user set password=PASSWORD('$PASSWORD') where User='root';"
-    # sudo /etc/init.d/mysql restart
-    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
-
-    # sudo mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-    
-    # sudo /etc/init.d/mysql restart
-    
-    
-    
-    
-    # env -i mysql_upgrade -u root -p --force
-
-
-    # sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
-    # mysql -uroot -p"$PASSWORD" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-    # sudo /etc/init.d/mysql restart
-
-    # cd ~/
-    # # env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
-    # # env -i sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
-    # sudo apt update
-    # sudo apt install -y mysql-server mysql-client
-    # env -i mysql_upgrade -u root -p$DEFAULTPASS --force
-    #  sudo /etc/init.d/mysql stop
-    #  sudo usermod -d /var/lib/mysql/ mysql
-    #  sudo /etc/init.d/mysql start
-    #  sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
-    # sudo /etc/init.d/mysql restart
-    # mysql -uroot -p[senha] -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-    # sudo /etc/init.d/mysql restart
 
     if [ "$(which apache2)" == "/usr/sbin/apache2" ]
     then
@@ -211,7 +175,8 @@ fn_install_MySQL(){
         sudo /etc/init.d/apache2 restart
     fi
      
-exit
+    sleep 1
+    exit
 
 }
 
