@@ -8,8 +8,8 @@ fn_install_resources(){
     echo "##### => Instala alguns pacotes que serão necessários para realizar nossa configuração."
     echo "|----------------------------------------------------------------------------------------------|"
     sudo apt --fix-broken install python-pycurl python-apt
-    sudo apt-get install software-properties-common build-essential libssl-dev --assume-yes --force-yes
-    sudo apt-get install curl unzip mcrypt git lynx vim aptitude --assume-yes --force-yes
+    sudo apt-get install software-properties-common build-essential libssl-dev --assume-yes --allow
+    sudo apt-get install curl unzip mcrypt git lynx vim aptitude --assume-yes --allow
 }
 
 #### FUNCOES ATUALIZACAO DOS PACOTES E DISTRIBUICAO
@@ -39,7 +39,7 @@ fn_install_apache(){
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o Apache"
     echo "|----------------------------------------------------|"
-    sudo apt install apache2 --assume-yes --force-yes
+    sudo apt install apache2 --assume-yes --allow
     # sudo vim /etc/apache2/envvars
     echo "##### => MELHORANDO SEGURANÇA DO APACHE"
     sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
@@ -57,11 +57,11 @@ fn_uninstall_apache(){
     echo "|----------------------------------------------------|"
     echo "##### => Remover o Apache"
     echo "|----------------------------------------------------|"
-    sudo apt purge apache* --assume-yes --force-yes
-    sudo apt remove apache* --assume-yes --force-yes
+    sudo apt purge apache* --assume-yes --allow
+    sudo apt remove apache* --assume-yes --allow
 
-    sudo apt autoremove --assume-yes --force-yes
-    sudo apt autoclean --assume-yes --force-yes
+    sudo apt autoremove --assume-yes --allow
+    sudo apt autoclean --assume-yes --allow
 
     echo "##### => REMOVENDO ARQUIVOS DO APACHE"
     sudo rm -R -f -v  /etc/apache2
@@ -77,12 +77,12 @@ fn_install_php(){
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o PHP 7.1"
     echo "|----------------------------------------------------|"
-    sudo apt install software-properties-common --assume-yes --force-yes
-    sudo add-apt-repository ppa:ondrej/php --assume-yes --force-yes
-    sudo apt update --assume-yes --force-yes
+    sudo apt install software-properties-common --assume-yes --allow
+    sudo add-apt-repository ppa:ondrej/php --assume-yes --allow
+    sudo apt update --assume-yes --allow
     sudo apt-cache pkgnames | grep php7.1
-    sudo apt install php7.1 php7.1-common php-pear --assume-yes --force-yes
-    sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
+    sudo apt install php7.1 php7.1-common php-pear --assume-yes --allow
+    sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --allow
     sudo apt-cache pkgnames | grep php7.1
     sudo a2dismod php7.2 
     sudo a2enmod php7.1 
@@ -103,13 +103,13 @@ fn_uninstall_php(){
     echo "##### => REMOVENDO o PHP"
     echo "|----------------------------------------------------|"
    
-    sudo apt purge php7.1 php7.1-common php-pear --assume-yes --force-yes
-    sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --force-yes
-    sudo apt purge php* --assume-yes --force-yes
-    sudo apt remove php* --assume-yes --force-yes
+    sudo apt purge php7.1 php7.1-common php-pear --assume-yes --allow
+    sudo apt purge php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml --assume-yes --allow
+    sudo apt purge php* --assume-yes --allow
+    sudo apt remove php* --assume-yes --allow
 
-    sudo apt autoremove --assume-yes --force-yes
-    sudo apt autoclean --assume-yes --force-yes
+    sudo apt autoremove --assume-yes --allow
+    sudo apt autoclean --assume-yes --allow
 
     echo "##### => REMOVE ARQUIVOS DO PHP"
     sudo rm -R -f -v /etc/php
@@ -132,11 +132,9 @@ fn_install_MySQL(){
     echo "##### => instalando MariaDB"
     echo "|----------------------------------------------------|"
     cd ~/
-    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-    sudo add-apt-repository 'deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu bionic main'
-    sudo dpkg --configure -a
+
     sudo apt update
-    sudo apt install mariadb-server mariadb-client --assume-yes --force-yes
+    sudo apt install mariadb-server mariadb-client --assume-yes --allow
 
     
     
