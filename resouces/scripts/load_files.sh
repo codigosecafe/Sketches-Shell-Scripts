@@ -10,6 +10,6 @@ source ./resouces/views/exit-view.sh
 source ./resouces/views/home-view.sh
 source ./resouces/views/menu-recommendations-view.sh
 source ./resouces/views/menu-uninstall-view.sh
-source ./resouces/views/menu-view.sh
+source ./resouces/views/menu-install-view.sh
 
 

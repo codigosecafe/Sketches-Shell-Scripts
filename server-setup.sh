@@ -79,8 +79,8 @@ init_script(){
             check_file_init ./resouces/views/menu-uninstall-view.sh menu-uninstall-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-uninstall-view.sh
         sleep 0.1
         
-        echo -e "XXX\n50\nCHECANDO VIEWS -> menu-view.sh.\nXXX"
-            check_file_init ./resouces/views/menu-view.sh menu-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-view.sh
+        echo -e "XXX\n50\nCHECANDO VIEWS -> menu-install-view.sh.\nXXX"
+            check_file_init ./resouces/views/menu-install-view.sh menu-install-view.sh https://raw.githubusercontent.com/codigosecafe/meus-shell-scripts/dev_shell/resouces/views/menu-install-view.sh
         sleep 0.1
 
         # Checo se os scripts
