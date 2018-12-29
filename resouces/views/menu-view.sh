@@ -16,21 +16,20 @@ view_menu(){
     if [ $status = 0 ]
     then
 
+        if  echo "$RESOUCES" | grep -q "MariaDB"; then 
+            PASSWORD=$(whiptail --passwordbox "\nDEFINA A SENHA DO USUARIO ROOT DO MariaDB (MySQL)" 8 78 --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" 3>&1 1>&2 2>&3)
+            exitstatus=$?
+            if [ $exitstatus = 0 ]; then
+                fn_install_MariaDB $PASSWORD
+            fi
+        fi
+
         if  echo "$RESOUCES" | grep -q "Apache2"; then 
             fn_install_apache
         fi
 
         if  echo "$RESOUCES" | grep -q "PHP"; then 
             fn_install_php
-        fi
-        
-        if  echo "$RESOUCES" | grep -q "MariaDB"; then 
-           
-            PASSWORD=$(whiptail --passwordbox "\nDEFINA A SENHA DO USUARIO ROOT DO MariaDB (MySQL)" 8 78 --title "$TITLE_APP" --backtitle "$TITLE_APP_BACK" 3>&1 1>&2 2>&3)
-            exitstatus=$?
-            if [ $exitstatus = 0 ]; then
-                fn_install_MariaDB $PASSWORD
-            fi
         fi
         
         if  echo "$RESOUCES" | grep -q "Composer"; then 
