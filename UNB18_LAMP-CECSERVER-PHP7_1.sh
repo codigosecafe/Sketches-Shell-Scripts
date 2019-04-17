@@ -33,8 +33,8 @@ echo "|----------------------------------------------------|"
 echo "##### => instalando MySQL 5.7"
 echo "|----------------------------------------------------|"
 cd ~/
-env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
-env -i sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+env -i wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
+env -i sudo dpkg -i mysql-apt-config_0.8.12-1_all.deb
 sudo apt-get update
 sudo apt-get install -y mysql-server
 env -i mysql_upgrade -u root -p --force
