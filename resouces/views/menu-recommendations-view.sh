@@ -24,7 +24,7 @@ view_menu_recommendations(){
             fn_install_resources
         fi
         
-        view_menu
+        view_home
     else
         view_cancel 1
     fi
