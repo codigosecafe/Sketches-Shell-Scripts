@@ -8,8 +8,8 @@ fn_install_resources(){
     echo "##### => Instala alguns pacotes que serão necessários para realizar nossa configuração."
     echo "|----------------------------------------------------------------------------------------------|"
     sudo apt --fix-broken install python-pycurl python-apt
-    sudo apt-get install software-properties-common build-essential libssl-dev --assume-yes
-    sudo apt-get install curl unzip mcrypt git lynx vim aptitude --assume-yes
+    sudo apt --fix-broken install software-properties-common build-essential libssl-dev --assume-yes
+    sudo apt --fix-broken install curl unzip mcrypt git lynx vim aptitude --assume-yes
 }
 
 #### FUNCOES ATUALIZACAO DOS PACOTES E DISTRIBUICAO
@@ -29,7 +29,7 @@ fn_upgrade_dist(){
     echo "|----------------------------------------------------|"
     echo "##### => Atualiza a distribuição do sistema"
     echo "|----------------------------------------------------|"
-    sudo apt-get -y dist-upgrade
+    sudo apt --fix-broken install -y dist-upgrade
 }
 
 #### FUNCOES DO APACHE
@@ -39,7 +39,7 @@ fn_install_apache(){
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o Apache"
     echo "|----------------------------------------------------|"
-    sudo apt install apache2 --assume-yes
+    sudo apt apt --fix-broken install apache2 --assume-yes
     # sudo vim /etc/apache2/envvars
     echo "##### => MELHORANDO SEGURANÇA DO APACHE"
     sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
@@ -77,12 +77,12 @@ fn_install_php(){
     echo "|----------------------------------------------------|"
     echo "##### => Instalando o PHP 7.1"
     echo "|----------------------------------------------------|"
-    sudo apt install -y software-properties-common
+    sudo apt apt --fix-broken install -y software-properties-common
     sudo add-apt-repository -y ppa:ondrej/php
     sudo apt update -y
     sudo apt-cache pkgnames | grep php7.1
-    sudo apt install php7.1 php7.1-common php-pear -y
-    sudo apt install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
+    sudo apt apt --fix-broken install php7.1 php7.1-common php-pear -y
+    sudo apt apt --fix-broken install php7.1-cli php7.1-gd libapache2-mod-php7.1 php7.1-mysql php7.1-curl php7.1-json php-memcached php7.1-dev php7.1-mcrypt php7.1-sqlite3 php7.1-mbstring php7.1-zip php7.1-xml -y
     sudo apt-cache pkgnames | grep php7.1
     sudo a2dismod php7.2 
     sudo a2enmod php7.1 
@@ -135,7 +135,7 @@ fn_install_MariaDB(){
 
      if ! grep "http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main" /etc/apt/sources.list > /dev/null
     then
-        sudo apt-get install software-properties-common
+        sudo apt-get apt --fix-broken install software-properties-common
         sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
         sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.3/ubuntu bionic main'
         fn_update_upgrade
@@ -144,7 +144,7 @@ fn_install_MariaDB(){
     echo "##### => Adicionando a senha do usuario root ao MariaDB"
     sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password password $PASSWORD"
     sudo debconf-set-selections <<< "mariadb-server mysql-server/root_password_again password $PASSWORD"
-    sudo apt install mariadb-server -qq --assume-yes
+    sudo apt apt --fix-broken install mariadb-server -qq --assume-yes
     echo "##### => Atualizando as tabelas do banco de dados"
     sudo mysql_upgrade -u root -p"$PASSWORD" --force
     echo "##### => Parando MariaDB"
