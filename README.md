@@ -12,5 +12,5 @@ Esse projeto surgiu da minha necessidade de automatizar o processo de configuraÃ
 
 
 ---
-> http://cecdigitalmaker.com.br | codigosecafe+git@gmail.com | Skype: claudio.alexssandro | https://www.linkedin.com/in/claudioalexssandrolino/
+> https://claudiodev.com.br | codigosecafe+git@gmail.com | Skype: claudio.alexssandro | https://www.linkedin.com/in/claudioalexssandrolino/
 ---
