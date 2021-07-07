@@ -7,7 +7,7 @@ echo "# author      : Claudio Alexssandro Lino"
 echo "# site        : http://codigosecafe.com.br"
 echo "# github      : https://github.com/codigosecafe"
 echo "# date        : 18/01/2018"
-echo "# version     : 1.0"
+echo "# version     : 1.0.0"
 echo "#=============================================================================="
 echo "\n"
 
