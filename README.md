@@ -4,11 +4,11 @@ Os arquivos presente neste repositório, passam por constante manutenção com f
 
 Para baixar esse repositorio via linha de comando no linux Ubuntu
 ```
-$ wget https://github.com/codigosecafe/meus-shell-scripts/archive/master.zip -O master.zip
+$ wget https://github.com/codigosecafe/script-up-server/archive/refs/heads/master.zip -O script-up-server.zip
 ```
 ## Sobre esse projeto
 
-Esse projeto surgiu da minha necessidade de automatizar o processo de configuração dos meus servidores web.
+Esse projeto surgiu da minha necessidade de automatizar o processo de configuração dos meus servidores VPS.
 
 
 ---
