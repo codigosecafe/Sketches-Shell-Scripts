@@ -62,3 +62,7 @@ echo '<VirtualHost *:80>
 
 </VirtualHost>' > ~/padraoCECSERVER.conf
 mv padraoCECSERVER.conf /etc/apache2/sites-available/
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
+exit 

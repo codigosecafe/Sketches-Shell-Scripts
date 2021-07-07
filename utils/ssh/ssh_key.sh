@@ -33,3 +33,8 @@ cat ~/.ssh/id_rsa
 git config --global user.name "$nomesshkey"
 git config --global user.email "$emailsshkey"
 git config --global color.ui auto
+
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
+exit 

@@ -32,3 +32,6 @@ sudo systemctl start redis
 sudo systemctl status redis
 
 echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
+exit 

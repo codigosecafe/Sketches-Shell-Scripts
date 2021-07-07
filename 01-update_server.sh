@@ -29,3 +29,4 @@ apt-get install -y curl unzip mcrypt git lynx vim
 echo "\n"
 echo "#=========================== FIM DO SCRIPT ===================================="
 echo "\n\n"
+exit 

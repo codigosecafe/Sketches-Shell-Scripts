@@ -101,4 +101,7 @@ case "$resposta" in
     ;;
 esac
 sudo reboot
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
 exit 

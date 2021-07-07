@@ -43,3 +43,7 @@ apt-get -y autoclean
 echo "\n"
 
 echo '<?php phpinfo(); ?>' > /var/www/html/showinfo.php
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
+exit 

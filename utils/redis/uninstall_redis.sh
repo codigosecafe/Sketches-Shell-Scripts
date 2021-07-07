@@ -16,3 +16,7 @@ apt-get purge redis*
 apt-get autoremove
 apt-get autoclean
 
+echo "\n"
+echo "#=========================== FIM DO SCRIPT ===================================="
+echo "\n\n"
+exit 
