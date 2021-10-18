@@ -4,7 +4,7 @@ Os arquivos presente neste repositório, passam por constante manutenção com f
 
 Para baixar esse repositorio via linha de comando no linux Ubuntu
 ```
-$ wget https://github.com/codigosecafe/script-up-server/archive/refs/heads/master.zip -O script-up-server.zip
+wget https://github.com/codigosecafe/script-up-server/archive/refs/heads/master.zip -O script-up-server.zip
 ```
 ## Sobre esse projeto
 
