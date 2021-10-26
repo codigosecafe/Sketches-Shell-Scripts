@@ -29,7 +29,7 @@ echo "##### => Instalando o MySQL."
 echo "|----------------------------------------------------------------------------------------------|"
 apt-get install -y mysql-server
 echo "|----------------------------------------------------------------------------------------------|"
-echo "##### => DIGITE A SENHA DO ROOT."
+echo "##### => DIGITE A SENHA DO USUARIO ROOT DO MySQL."
 echo "|----------------------------------------------------------------------------------------------|"
 mysql_upgrade -u root -p --force
 service mysql stop
