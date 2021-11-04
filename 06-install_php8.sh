@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "\n\n"
 echo "#=============================================================================="
-echo "# title       : INSTALL PHP7.8"
-echo "# description : Script para instalacao do PHP7.8"
+echo "# title       : INSTALL PHP8.0"
+echo "# description : Script para instalacao do PHP8.0"
 echo "# author      : Claudio Alexssandro Lino"
 echo "# github      : https://github.com/codigosecafe"
 echo "# version     : 1.0.0"
@@ -14,18 +14,20 @@ apt-get update
 aptitude install -y software-properties-common
 add-apt-repository -y ppa:ondrej/php
 aptitude update -y
-apt-cache pkgnames | grep php7.8
-apt install php7.8 php7.8-common php-pear libphp7.8-embed -y
-apt install php7.8-bz2 php7.8-cgi php7.8-cli php7.8-dba php7.8-dev -y
-apt install php7.8-bcmath php7.8-fpm php7.8-gmp php7.8-mysql php7.8-mysqli php7.8-tidy -y
-apt install php7.8-sqlite3 php7.8-json php7.8-opcache php7.8-sybase php7.8-curl -y
-apt install php7.8-ldap php7.8-phpdbg php7.8-imap php7.8-xml php7.8-xsl php7.8-intl -y
-apt install php7.8-zip php7.8-odbc php7.8-mbstring php7.8-readline php7.8-gd php7.8-interbase -y
-apt install php7.8-snmp php7.8-xmlrpc php7.8-soap php7.8-pspell php7.8-pgsql php7.8-enchant php7.8-recode php7.8-redis -y
-apt-cache pkgnames | grep php7.8
-a2enmod php7.8 
-update-alternatives --set php /usr/bin/php7.8  
-php -i | grep /etc/php/7.8/apache2/php.ini
+sudo apt search php8.0-*
+apt-cache pkgnames | grep php8.0
+apt install php8.0 php8.0-common php-pear libphp8.0-embed -y
+apt install php8.0-bz2 php8.0-cgi php8.0-cli php8.0-dba php8.0-dev -y
+apt install php8.0-bcmath php8.0-fpm php8.0-gmp php8.0-mysql php8.0-mysqli php8.0-tidy -y
+apt install php8.0-sqlite3 php8.0-json php8.0-opcache php8.0-sybase php8.0-curl -y
+apt install php8.0-ldap php8.0-phpdbg php8.0-imap php8.0-xml php8.0-xsl php8.0-intl -y
+apt install php8.0-zip php8.0-odbc php8.0-mbstring php8.0-readline php8.0-gd php8.0-interbase -y
+apt install php8.0-snmp php8.0-xmlrpc php8.0-soap php8.0-pspell php8.0-pgsql php8.0-enchant php8.0-recode php8.0-redis -y
+apt install libapache2-mod-php8.0 -y
+apt-cache pkgnames | grep php8.0
+a2enmod php8.0 
+update-alternatives --set php /usr/bin/php8.0  
+php -i | grep /etc/php/8.0/apache2/php.ini
 php --ini
 /etc/init.d/apache2 restart
 echo "\n"
