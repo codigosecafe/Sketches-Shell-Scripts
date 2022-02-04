@@ -12,12 +12,12 @@ echo "|-------------------------------------------------------------------------
 echo "##### => Baixando o pacote do mysql."
 echo "|----------------------------------------------------------------------------------------------|"
 cd ~/
-wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
 echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando as config do pacote do MySQL."
 echo "|----------------------------------------------------------------------------------------------|"
-dpkg -i mysql-apt-config_0.8.22-1_all.deb
+sudo apt install ./mysql-apt-config_0.8.12-1_all.deb
 echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Atualizando a lista de dependencia."
@@ -27,7 +27,8 @@ echo "\n"
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => Instalando o MySQL."
 echo "|----------------------------------------------------------------------------------------------|"
-apt-get install -y mysql-server
+#apt-get install -y mysql-server
+sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
 echo "|----------------------------------------------------------------------------------------------|"
 echo "##### => DIGITE A SENHA DO USUARIO ROOT DO MySQL."
 echo "|----------------------------------------------------------------------------------------------|"
