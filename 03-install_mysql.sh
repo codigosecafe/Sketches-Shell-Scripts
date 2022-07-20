@@ -35,6 +35,14 @@ echo "|-------------------------------------------------------------------------
 mysql_upgrade -u root -p --force
 service mysql stop
 usermod -d /var/lib/mysql/ mysql
+sudo echo ' ' >> /etc/mysql/mysql.cnf
+sudo echo '[mysqld]' >> /etc/mysql/mysql.cnf
+sudo echo '#sql_mode=ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' >> /etc/mysql/mysql.cnf
+sudo echo '#bind-address = ::ffff:127.0.0.1' >> /etc/mysql/mysql.cnf
+sudo echo '#local-infile=0' >> /etc/mysql/mysql.cnf
+sudo echo ' ' >> /etc/mysql/mysql.cnf
+sudo echo '# Important: remove limitation of group by with the following line' >> /etc/mysql/mysql.cnf
+sudo echo 'sql_mode = ""' >> /etc/mysql/mysql.cnf
 service mysql start
 rm -rf mysql*.deb
 echo "\n"

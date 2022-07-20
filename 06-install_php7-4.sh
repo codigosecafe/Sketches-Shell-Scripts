@@ -15,8 +15,8 @@ aptitude install -y software-properties-common
 add-apt-repository -y ppa:ondrej/php
 aptitude update -y
 apt-cache pkgnames | grep php7.4
-apt install php7.4 php7.4-common php-pear libphp7.4-embed -y
-apt install php7.4-bz2 php7.4-cgi php7.4-cli php7.4-dba php7.4-dev -y
+apt install php7.4 php7.4-common libphp7.4-embed -y
+apt install php7.4-bz2 php7.4-cgi php7.4-cli php7.4-dba php7.4-dev php7.4-xdebug -y
 apt install php7.4-bcmath php7.4-fpm php7.4-gmp php7.4-mysql php7.4-mysqli php7.4-tidy -y
 apt install php7.4-sqlite3 php7.4-json php7.4-opcache php7.4-sybase php7.4-curl -y
 apt install php7.4-ldap php7.4-phpdbg php7.4-imap php7.4-xml php7.4-xsl php7.4-intl -y
@@ -27,6 +27,10 @@ a2enmod php7.4
 update-alternatives --set php /usr/bin/php7.4  
 php -i | grep /etc/php/7.4/apache2/php.ini
 php --ini
+
+pecl uninstall xdebug
+pecl install xdebug
+
 /etc/init.d/apache2 restart
 echo "\n"
 echo "|----------------------------------------------------|"

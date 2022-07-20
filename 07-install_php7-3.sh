@@ -15,8 +15,8 @@ aptitude install -y software-properties-common
 add-apt-repository -y ppa:ondrej/php
 aptitude update -y
 apt-cache pkgnames | grep php7.3
-apt install php7.3 php7.3-common php-pear libphp7.3-embed -y
-apt install php7.3-bz2 php7.3-cgi php7.3-cli php7.3-dba php7.3-dev -y
+apt install php7.3 php7.3-common libphp7.3-embed -y
+apt install php7.3-bz2 php7.3-cgi php7.3-cli php7.3-dba php7.3-dev php7.3-xdebug -y
 apt install php7.3-bcmath php7.3-fpm php7.3-gmp php7.3-mysql php7.3-mysqli php7.3-tidy -y
 apt install php7.3-sqlite3 php7.3-json php7.3-opcache php7.3-sybase php7.3-curl -y
 apt install php7.3-ldap php7.3-phpdbg php7.3-imap php7.3-xml php7.3-xsl php7.3-intl -y
@@ -27,6 +27,10 @@ a2enmod php7.3
 update-alternatives --set php /usr/bin/php7.3  
 php -i | grep /etc/php/7.3/apache2/php.ini
 php --ini
+
+pecl uninstall xdebug
+pecl install xdebug
+
 /etc/init.d/apache2 restart
 echo "\n"
 echo "|----------------------------------------------------|"
