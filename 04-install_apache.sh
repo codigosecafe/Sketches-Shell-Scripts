@@ -16,6 +16,7 @@ echo "##### => MELHORANDO SEGURANÇA DO APACHE"
 vim /etc/apache2/conf-available/security.conf
 a2enmod rewrite 
 a2enmod deflate
+a2enmod ssl
 /etc/init.d/apache2 restart
 echo "\n"
 echo "#=============================================================================="
