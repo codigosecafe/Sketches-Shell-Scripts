@@ -1,6 +1,0 @@
-## comandos git
-PATH_ALIAS_GIT="PATH_TO_ALIAS_GIT/"
-alias gitcommit="${PATH_ALIAS_GIT}/gitAddCommit.sh"
-alias gitpull="${PATH_ALIAS_GIT}/gitPull.sh"
-alias gitpush="${PATH_ALIAS_GIT}/gitPush.sh"
-alias gitrestore="${PATH_ALIAS_GIT}/gitResetBranch.sh"

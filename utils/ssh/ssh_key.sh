@@ -21,14 +21,12 @@ echo "\n"
 
 ssh-keygen -t rsa -b 4096 -C "$emailsshkey"
 
-eval "$(ssh-agent -s)"
 cp ~/script-up-server/utils/ssh/config ~/.ssh/config
-ssh-add ~/.ssh/deploy
-
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
 
 echo "\n"
-
-cat ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
 
 git config --global user.name "$nomesshkey"
 git config --global user.email "$emailsshkey"
