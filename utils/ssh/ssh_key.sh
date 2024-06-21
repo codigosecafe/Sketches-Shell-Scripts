@@ -21,7 +21,7 @@ echo "\n"
 
 ssh-keygen -t rsa -b 4096 -C "$emailsshkey"
 
-cp ~/script-up-server/utils/ssh/config ~/.ssh/config
+#cp ~/script-up-server/utils/ssh/config ~/.ssh/config
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
