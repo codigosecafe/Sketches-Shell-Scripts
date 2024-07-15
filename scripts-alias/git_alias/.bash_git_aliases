@@ -1,5 +1,5 @@
 ## comandos git
-PATH_ALIAS_GIT="/var/www/scripts/git_alias"
+PATH_ALIAS_GIT="/home/claudiodev/workspace/script-up-server/scripts-alias/git_alias"
 alias gitcommit="${PATH_ALIAS_GIT}/gitAddCommit.sh"
 alias gitpull="${PATH_ALIAS_GIT}/gitPull.sh"
 alias gitpush="${PATH_ALIAS_GIT}/gitPush.sh"
