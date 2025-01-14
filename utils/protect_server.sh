@@ -55,7 +55,7 @@ check_status
 
 # Configurando Fail2Ban
 echo "Copiando arquivo de configuração do Fail2Ban..."
-if [ -f ~/script-up-server/jail.local ]; then
+if [ -f ~/script-up-server/utils/jail.local ]; then
     cp ~/script-up-server/utils/jail.local /etc/fail2ban/jail.local
     #rm ~/script-up-server/utils/jail.local
     check_status
@@ -76,7 +76,7 @@ check_status
 # Alteração da porta SSH
 print_section "Alteração da Porta SSH"
 read -p "Deseja alterar a porta SSH? (s)sim/(n)não: " respostassh
-if [[ "$respostassh" =~ ^[sS]$ ]]; then
+if [ "$respostassh" = "s" ] || [ "$respostassh" = "S" ]; then
     vim /etc/ssh/sshd_config
     read -p "Qual foi a porta definida? " respostaportassh
     systemctl restart sshd
@@ -89,7 +89,7 @@ fi
 # Configuração do UFW (Firewall)
 print_section "Configuração do UFW (Firewall)"
 read -p "Deseja configurar o UFW? (s)sim/(n)não: " resposta
-if [[ "$resposta" =~ ^[sS]$ ]]; then
+if [ "$resposta" = "s" ] || [ "$resposta" = "S" ]; then
     echo "Habilitando UFW..."
     ufw enable
     check_status
@@ -111,12 +111,12 @@ fi
 # Reinicialização do servidor
 print_section "Reiniciando o servidor"
 read -p "Deseja reiniciar o servidor agora? (s)sim/(n)não: " reiniciar
-if [[ "$reiniciar" =~ ^[sS]$ ]]; then
+if [ "$reiniciar" = "s" ] || [ "$reiniciar" = "S" ]; then
     reboot
 else
     echo "Reinicialização adiada."
 fi
 
 # Fim do script
-echo -e "\n#=========================== FIM DO SCRIPT ===================================="
+echo -e "\n#=========================== FIM DO SCRIPT ====================================" 
 exit 0
