@@ -60,7 +60,7 @@ if [ -f ~/script-up-server/utils/jail.local ]; then
     #rm ~/script-up-server/utils/jail.local
     check_status
 else
-    echo "⚠️ Arquivo ~/script-up-server/jail.local não encontrado. Pulando etapa."
+    echo "⚠️ Arquivo ~/script-up-server/utils/jail.local não encontrado. Pulando etapa."
 fi
 
 echo "Iniciando serviço do Fail2Ban..."
