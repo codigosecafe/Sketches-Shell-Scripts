@@ -57,7 +57,7 @@ check_status
 echo "Copiando arquivo de configuração do Fail2Ban..."
 if [ -f ~/script-up-server/jail.local ]; then
     cp ~/script-up-server/utils/jail.local /etc/fail2ban/jail.local
-    rm ~/script-up-server/utils/jail.local
+    #rm ~/script-up-server/utils/jail.local
     check_status
 else
     echo "⚠️ Arquivo ~/script-up-server/jail.local não encontrado. Pulando etapa."
